@@ -7,15 +7,24 @@
 //
 
 import UIKit
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        //最开始加载登陆ViewController
+        
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        let loginStoryBoard = UIStoryboard(name:"Login", bundle: nil)
+        let loginViewController = loginStoryBoard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        self.window                     = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window!.rootViewController = loginViewController
+        self.window!.makeKeyAndVisible()
+        
+        print(Location.shareInstance.currentLocationX)
+        print(Location.shareInstance.currentLocationY)
         return true
     }
 

@@ -1,0 +1,296 @@
+<string-arrays>
+<string-array name="客梯/货梯 半月保内容">
+    <item>机房、滑轮间环境</item>
+    <item>手动紧急操作装置</item>
+    <item>曳引机</item>
+    <item>制动器各销轴部位</item>
+    <item>制动器间隙</item>
+    <item>编码器</item>
+    <item>限速器各销轴部位</item>
+    <item>轿顶</item>
+    <item>轿顶检修开关、急停开关</item>
+    <item>导靴上油杯</item>
+    <item>对重块及其压板</item>
+    <item>井道照明</item>
+    <item>轿厢照明、风扇、应急照明</item>
+    <item>轿厢检修开关、急停开关</item>
+    <item>轿内报警装置、对讲系统</item>
+    <item>轿内显示、指令按钮</item>
+    <item>轿门安全装置</item>
+    <item>轿门门锁电气触点</item>
+    <item>轿门运行</item>
+    <item>轿厢平层精度</item>
+    <item>层站召唤、层楼显示</item>
+    <item>层门地坎</item>
+    <item>层门自动关门装置</item>
+    <item>层门门锁自动复位</item>
+    <item>层门门锁电气触点</item>
+    <item>层门锁紧元件啮合长度</item>
+    <item>底坑环境</item>
+    <item>底坑急停开关</item>
+</string-array>
+<string-array name="客梯/货梯 半月保要求">
+    <item>清洁，门窗完好、照明正常</item>
+    <item>齐全，在指定位置</item>
+    <item>运行时无异常振动和异常声响</item>
+    <item>润滑，动作灵活</item>
+    <item>打开时制动衬与制动轮不应发生摩擦</item>
+    <item>清洁，安装牢固</item>
+    <item>润滑，转动灵活；电气开关正常</item>
+    <item>清洁，防护栏安全可靠</item>
+    <item>工作正常</item>
+    <item>吸油毛毡齐全，油量适宜，油杯无泄漏</item>
+    <item>对重块无松动，压板紧固</item>
+    <item>齐全、正常</item>
+    <item>工作正常</item>
+    <item>工作正常</item>
+    <item>工作正常</item>
+    <item>齐全、有效</item>
+    <item>功能有效</item>
+    <item>清洁, 触点接触良好，接线可靠</item>
+    <item>开启和关闭工作正常</item>
+    <item>符合标准</item>
+    <item>齐全、有效</item>
+    <item>清洁</item>
+    <item>正常</item>
+    <item>打开手动开锁装置释放后，层门门锁能自动复位</item>
+    <item>清洁, 触点接触良好，接线可靠</item>
+    <item>不小于7mm</item>
+    <item>清洁，无渗水、积水，照明正常</item>
+    <item>工作正常</item>
+</string-array>
+<string-array name="客梯/货梯 季度保内容">
+    <item>减速机润滑油</item>
+    <item>制动衬</item>
+    <item>位置脉冲发生器</item>
+    <item>选层器动静触点</item>
+    <item>曳引轮槽、曳引钢丝绳</item>
+    <item>限速器轮槽、限速器钢丝绳</item>
+    <item>靴衬、滚轮</item>
+    <item>验证轿门关闭的电气安全装置</item>
+    <item>轿门系统中传动钢丝绳、链条、胶带</item>
+    <item>层门门导靴</item>
+    <item>消防开关</item>
+    <item>耗能缓冲器</item>
+    <item>限速器张紧轮装置和电气安全装置</item>
+</string-array>
+<string-array name="客梯/货梯 季度保要求">
+    <item>油量适宜，除蜗杆伸出端外均无渗漏</item>
+    <item>清洁，磨损量不超过制造单位要求</item>
+    <item>工作正常</item>
+    <item>清洁，无烧蚀</item>
+    <item>清洁，无严重油腻，张力均匀</item>
+    <item>清洁，无严重油腻</item>
+    <item>清洁，磨损量不超过制造单位要求</item>
+    <item>工作正常</item>
+    <item>按照制造单位要求进行清洁、调整</item>
+    <item>磨损量不超过制造单位要求</item>
+    <item>工作正常，功能有效</item>
+    <item>电气安全装置功能有效，油量适宜，柱塞无锈蚀</item>
+    <item>工作正常</item>
+</string-array>
+<string-array name="客梯/货梯 半年保内容">
+    <item>电动机与减速机联轴器螺栓</item>
+    <item>曳引轮、导向轮轴承部</item>
+    <item>曳引轮槽</item>
+    <item>制动器上检测开关</item>
+    <item>控制柜内各接线端子</item>
+    <item>控制柜各仪表</item>
+    <item>井道、对重、轿顶各反绳轮轴承部</item>
+    <item>曳引绳、补偿绳</item>
+    <item>曳引绳绳头组合</item>
+    <item>限速器钢丝绳</item>
+    <item>层门、轿门门扇</item>
+    <item>对重缓冲距</item>
+    <item>补偿链（绳）与轿厢、对重接合处</item>
+    <item>上下极限开关</item>
+</string-array>
+<string-array name="客梯/货梯 半年保要求">
+    <item>无松动</item>
+    <item>无异常声，无振动，润滑良好</item>
+    <item>磨损量不超过制造单位要求</item>
+    <item>工作正常，制动器动作可靠</item>
+    <item>各接线紧固、整齐，线号齐全清晰</item>
+    <item>显示正确</item>
+    <item>无异常声，无振动，润滑良好</item>
+    <item>磨损量、断丝数不超过要求</item>
+    <item>螺母无松动</item>
+    <item>磨损量、断丝数不超过制造单位要求</item>
+    <item>门扇各相关间隙符合标准</item>
+    <item>符合标准</item>
+    <item>固定、无松动</item>
+    <item>工作正常</item>
+</string-array>
+<string-array name="客梯/货梯 年保内容">
+    <item>减速机润滑油</item>
+    <item>控制柜接触器，继电器触点</item>
+    <item>制动器铁芯</item>
+    <item>制动器制动弹簧压缩量</item>
+    <item>导电回路绝缘性能测试</item>
+    <item>限速器安全钳联动试验</item>
+    <item>上行超速保护装置动作试验</item>
+    <item>轿厢架、轿门及其附件安装螺栓</item>
+    <item>轿厢和对重的导轨支架</item>
+    <item>轿厢和对重的导轨</item>
+    <item>随行电缆</item>
+    <item>层门装置和地坎</item>
+    <item>轿厢称重装置</item>
+    <item>安全钳钳座</item>
+    <item>轿底各安装螺栓</item>
+    <item>缓冲器</item>
+</string-array>
+<string-array name="客梯/货梯 年保要求">
+    <item>按照制造单位要求适时更换，保证油质符合要求</item>
+    <item>接触良好</item>
+    <item> 清洁、润滑、检查，磨损量不超过制造单位要求</item>
+    <item>符合制造单位要求，保持有足够的制动力</item>
+    <item>符合标准</item>
+    <item>工作正常</item>
+    <item>工作正常</item>
+    <item>紧固</item>
+    <item>固定，无松动</item>
+    <item>清洁，压板牢固</item>
+    <item>无损伤</item>
+    <item>无影响正常使用的变形，各安装螺栓紧固</item>
+    <item>准确有效</item>
+    <item>固定，无松动</item>
+    <item>紧固</item>
+    <item>固定，无松动</item>
+</string-array>
+<string-array name="扶梯 半月保内容">
+    <item>电器部件</item>
+    <item>电子板</item>
+    <item>杂物和垃圾</item>
+    <item>设备运行状况</item>
+    <item>主驱动链</item>
+    <item>制动器机械装置</item>
+    <item>制动检测开关</item>
+    <item>制动触点</item>
+    <item>减速机润滑油</item>
+    <item>电机通风口</item>
+    <item>检修控制装置</item>
+    <item>自动润滑油罐油位</item>
+    <item>梳齿板开关</item>
+    <item>梳齿板照明</item>
+    <item>梳齿板梳齿与踏板面齿槽、导向胶带</item>
+    <item>梯级或者踏板下陷开关</item>
+    <item>梯级链张紧开关</item>
+    <item>梯身上部三角档板</item>
+    <item>梯级滚轮和梯级导轨</item>
+    <item>梯级、踏板与围裙板</item>
+    <item>运行方向显示</item>
+    <item>扶手带入口处保护开关</item>
+    <item>扶手带</item>
+    <item>扶手带运行</item>
+    <item>扶手护壁板</item>
+    <item>上下出入口处的照明</item>
+    <item>上下出入口和扶梯之间保护栏杆</item>
+    <item>出入口安全警示标志</item>
+    <item>分离机房、各驱动和转向站</item>
+    <item>自动运行功能</item>
+    <item>急停开关</item>
+</string-array>
+<string-array name="扶梯 半月保要求">
+    <item>清洁，接线有效</item>
+    <item>信号功能正常</item>
+    <item>清扫，清洁</item>
+    <item>正常，没有异响和抖动</item>
+    <item>运转正常</item>
+    <item>清洁，动作正常</item>
+    <item>工作正常</item>
+    <item>工作正常</item>
+    <item>油量适宜，无渗油</item>
+    <item>清洁</item>
+    <item>工作正常</item>
+    <item>油位正常，润滑系统工作正常</item>
+    <item>工作正常</item>
+    <item>照明正常</item>
+    <item>梳齿板梳齿与踏板面齿槽、导向胶带啮合正常</item>
+    <item>工作正常</item>
+    <item>位置正确，动作正常</item>
+    <item>有效，无破损</item>
+    <item>工作正常</item>
+    <item>任一侧水平间隙符合标准</item>
+    <item>工作正常</item>
+    <item>动作灵活可靠，清除入口处垃圾</item>
+    <item>表面无毛刺，无机械损伤，运行无摩擦</item>
+    <item>速度正常</item>
+    <item>牢固可靠</item>
+    <item>工作正常</item>
+    <item>牢固可靠</item>
+    <item>齐全，醒目</item>
+    <item>清洁，无杂物</item>
+    <item>工作正常</item>
+    <item>工作正常</item>
+</string-array>
+<string-array name="扶梯 季度保内容">
+    <item>扶手带的运行速度</item>
+    <item>梯级链张紧装置</item>
+    <item>梯级轴衬</item>
+    <item>梯级链润滑</item>
+    <item>防灌水保护装置</item>
+</string-array>
+<string-array name="扶梯 季度保要求">
+    <item>相对于梯级、踏板或者胶带的速度允差为0～＋2％</item>
+    <item>工作正常</item>
+    <item>润滑有效</item>
+    <item>运行工况正常</item>
+    <item>动作可靠（雨季到来之前必须完成）</item>
+</string-array>
+<string-array name="扶梯 半年保内容">
+    <item>制动衬厚度</item>
+    <item>主驱动链</item>
+    <item>主驱动链链条滑块</item>
+    <item>空载向下运行制动距离</item>
+    <item>制动器机械装置</item>
+    <item>附加制动器</item>
+    <item>减速机润滑油</item>
+    <item>调整梳齿板梳齿与踏板面齿槽啮合深度和间隙</item>
+    <item>扶手带张紧度张紧弹簧负荷长度</item>
+    <item>扶手带速度监控器系统</item>
+    <item>梯级踏板加热装置</item>
+</string-array>
+<string-array name="扶梯 半年保要求">
+    <item>不小于制造单位要求</item>
+    <item>清理表面油污，润滑</item>
+    <item>清洁，厚度符合标准</item>
+    <item>符合标准</item>
+    <item>润滑，工作有效</item>
+    <item>清洁和润滑，功能可靠</item>
+    <item>更换，符合制造单位的要求</item>
+    <item>符合标准</item>
+    <item>符合标准</item>
+    <item>工作正常</item>
+    <item>功能正常，温度感应器接线牢固</item>
+</string-array>
+<string-array name="扶梯 年保内容">
+    <item>主接触器</item>
+    <item>主机速度检测功能</item>
+    <item>电缆</item>
+    <item>扶手带托轮、滑轮群、防静电轮</item>
+    <item>扶手带内侧凸缘处</item>
+    <item>扶手带断带保护开关</item>
+    <item>扶手带导向块和导向轮</item>
+    <item>在进入梳齿板处的梯级与导轮的轴向窜动量</item>
+    <item>内外盖板连接</item>
+    <item>围裙板安全开关</item>
+    <item>围裙板对接处</item>
+    <item>电气安全装置</item>
+    <item>设备运行状况</item>
+</string-array>
+<string-array name="扶梯 年保要求">
+    <item>工作可靠</item>
+    <item>功能可靠，清洁感应面</item>
+    <item>无破损，固定牢固</item>
+    <item>清洁，无损伤，托轮转动平滑</item>
+    <item>无损伤，清洁扶手导轨滑动面</item>
+    <item>功能正常</item>
+    <item>清洁，工作正常</item>
+    <item>符合标准</item>
+    <item>紧密牢固，连接处的凸台、缝隙符合标准</item>
+    <item>测试有效</item>
+    <item>紧密平滑</item>
+    <item>动作可靠</item>
+    <item>正常，梯级运行平稳，无异常抖动</item>
+</string-array>
+</string-arrays>
