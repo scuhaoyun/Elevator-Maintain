@@ -40,7 +40,7 @@ class HYDbMaintainRecord:NSObject {
     func createMaintainRecordTable() {
         try! db.run(maintainRecordTable.create(ifNotExists: true){ t in
             t.column(id, primaryKey: .Autoincrement)
-            t.column(twoCodeId)
+            t.column(twoCodeId,unique:true)
             t.column(ywKind)
             t.column(startTime)
             t.column(endTime)

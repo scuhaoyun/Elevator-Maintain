@@ -176,6 +176,8 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
                 "ywstatusFlag":self.ywstatusFlag,
                 "imgStr":imgStr,
                 "fileLen":fileLen,
+//                "imgStr":"f",
+//                "fileLen":1,
                 "ywDetail":self.ywDetail
                 ]).responseJSON { response in
                     HYProgress.dismiss()
@@ -260,11 +262,10 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
         }
         return nil
     }
-    //FIXME:判断坐标是否正确(还没解决)
     func isLocationCorrect(map_X:Double,map_Y:Double)-> Bool {
-        let distance0 = (Double(self.map_X0)! - map_X) * (Double(self.map_X0)! - map_X) + (Double(self.map_Y0)! - map_Y) * (Double(self.map_Y0)! - map_Y)
-        let distance1 = (Double(self.map_X1)! - map_X) * (Double(self.map_X1)! - map_X) + (Double(self.map_Y1)! - map_Y) * (Double(self.map_Y1)! - map_Y)
-        let distance2 = (Double(self.map_X2)! - map_X) * (Double(self.map_X2)! - map_X) + (Double(self.map_Y2)! - map_Y) * (Double(self.map_Y2)! - map_Y)
-        return sqrt(distance0) < 500 && sqrt(distance1) < 500 && sqrt(distance2) < 500
+        let distance0 = Location.getDistance(map_X, lat1: map_Y, long2: Double(map_X0)!, lat2: Double(map_Y0)!)
+        let distance1 = Location.getDistance(map_X, lat1: map_Y, long2: Double(map_X1)!, lat2: Double(map_Y1)!)
+        let distance2 = Location.getDistance(map_X, lat1: map_Y, long2: Double(map_X2)!, lat2: Double(map_Y2)!)
+        return distance0 < 500 && distance1 < 500 && distance2 < 500
     }
 }

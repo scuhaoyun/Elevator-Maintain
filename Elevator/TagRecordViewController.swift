@@ -24,7 +24,7 @@ class TagRecordViewController : UIViewController,HYBottomToolBarButtonClickDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         loadToolBar()
-        loadTagData()
+        
         tagTableview.delegate = self
         tagTableview.dataSource = self
         self.view.autoresizesSubviews = false
@@ -32,6 +32,7 @@ class TagRecordViewController : UIViewController,HYBottomToolBarButtonClickDeleg
     }
     override func viewWillAppear(animated: Bool) {
         tagTableview.separatorInset = UIEdgeInsetsZero
+        loadTagData()
     }
     
     /**

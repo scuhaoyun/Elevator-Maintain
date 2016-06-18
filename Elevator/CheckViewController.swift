@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import ObjectMapper
 class CheckViewController : UIViewController,HYBottomToolBarButtonClickDelegate,SwiftAlertViewDelegate,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var refreshBtn: UIButton!
     @IBOutlet weak var searchBtn: UIButton!
@@ -85,7 +86,7 @@ class CheckViewController : UIViewController,HYBottomToolBarButtonClickDelegate,
             //远程搜索
             if buttonIndex == 1 && !isLocalSearch{
                 let parameters = ["address": contentView.addressTxt.text!,"buildingName":contentView.buildingNameTxt.text!]
-                remoteSearch("http://cddt.zytx-robot.com/twoCodemobileweb/sjba/queryddEleShenHeInfoTcMobile.do",parameters: parameters)
+                remoteSearch("http://cddt.zytx-robot.com/twoCodemobileweb/sjba/newqueryddEleShenHeInfoTcMobile.do",parameters: parameters)
             }
             //本地搜索
             if buttonIndex == 1 && isLocalSearch {
@@ -192,28 +193,37 @@ class CheckViewController : UIViewController,HYBottomToolBarButtonClickDelegate,
         if HYNetwork.isConnectToNetwork(self) {
             HYProgress.showWithStatus("正在查询，请稍等！")
             Alamofire.request(.GET, urlString, parameters: parameters)
-                .responseArray { (response: Response<[CheckRecord], NSError>) in
+                .responseJSON { response in
                     HYProgress.dismiss()
-                    if response.result.isSuccess && response.result.value?.count > 0 {
-                        HYToast.showString("获取成功！")
-                        self.checkRecords = response.result.value!
-                        HYDefaults[.checkInfo] = [parameters["address"]!,parameters["buildingName"]!]
-                        for checkRd in self.checkRecords {
-                            if CheckRecord.selectForQR(checkRd.registNumber).count > 0 {
-                                checkRd.updateDb()
+                    if response.result.isSuccess {
+                        if HYJSON(response.result.value!)["stotal"].int == 0 {
+                            self.checkRecords = Mapper<CheckRecord>().mapArray(HYJSON(response.result.value!)["listArray"].arrayObject)!
+                            if self.checkRecords.count > 0 {
+                                HYToast.showString("获取成功！")
+                                HYDefaults[.checkInfo] = [parameters["address"]!,parameters["buildingName"]!]
+                                for checkRd in self.checkRecords {
+                                    if CheckRecord.selectForQR(checkRd.registNumber).count > 0 {
+                                        checkRd.updateDb()
+                                    }
+                                    else {
+                                        checkRd.insertToDb()
+                                    }
+                                }
                             }
-                            else {
-                                checkRd.insertToDb()
+                            else{
+                                HYToast.showString("没有可执行的任务！")
                             }
                         }
-                    }
-                    else if response.result.value?.count == 0 {
-                        HYToast.showString("没有可执行的任务！")
+                        else {
+                            HYToast.showString("结果条数过多，请增加搜索条件重新搜索！")
+                        }
+                        
                     }
                     else{
                         HYToast.showString("获取失败")
                     }
-            }
+
+                }
         }
 
     }

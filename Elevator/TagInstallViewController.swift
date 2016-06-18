@@ -49,7 +49,7 @@ class TagInstallViewController : UIViewController,HYBottomToolBarButtonClickDele
         
     }
     @IBAction func areaComboBoxPicker(sender: AnyObject) {
-        areaPicker = AJDropDownPicker(delegate: self, dataSourceArray: ["锦江区","武侯区","成华区","金牛区","青羊区","温江区","青白江区","新都区","龙泉驿区,都江堰市","崇州市","邛崃市","彭州市","双流县","金堂县","大邑县","郫县","新津县","蒲江县"])
+        areaPicker = AJDropDownPicker(delegate: self, dataSourceArray: ["锦江区","武侯区","成华区","金牛区","青羊区","温江区","青白江区","新都区","龙泉驿区","都江堰市","崇州市","邛崃市","彭州市","双流县","金堂县","大邑县","郫县","新津县","蒲江县"])
         areaPicker!.showFromView(sender as! UIView)
     }
     @IBAction func useComboBoxPicker(sender: AnyObject) {
@@ -144,44 +144,45 @@ class TagInstallViewController : UIViewController,HYBottomToolBarButtonClickDele
             tagRecord!.mobileUploadbeizhu = self.mobileUploadbeizhuTxt.text!
             tagRecord!.deviceId2 = self.deviceId2Txt.text!
             tagRecord!.type = "记录"
-            
-            
-            //HYProgress.dismiss()
-
-            self.dismissViewControllerAnimated(true, completion: {
-                if self.img1Btn.tag == 111 {
-                    HYImage.shareInstance.deleteFileForName(self.tagRecord!.imgStr1Name)
-                    self.tagRecord!.imgStr1Name = HYImage.shareInstance.imageToSave(self.img1Btn.backgroundImageForState(.Normal)!)!
-                }
-                if self.img2Btn.tag == 111 {
-                    HYImage.shareInstance.deleteFileForName(self.tagRecord!.imgStr2Name)
-                    self.tagRecord!.imgStr2Name = HYImage.shareInstance.imageToSave(self.img2Btn.backgroundImageForState(.Normal)!)!
-                }
-                if self.img3Btn.tag == 111 || self.image3 != nil {
-                    HYImage.shareInstance.deleteFileForName(self.tagRecord!.imgStr3Name)
-                    self.tagRecord!.imgStr3Name = HYImage.shareInstance.imageToSave(self.img3Btn.backgroundImageForState(.Normal)!)!
-                }
-                if self.tagRecord!.isExit {
-                    let alertController = UIAlertController(title: "温馨提示", message: "已存在编号为\(self.tagRecord!.registNumber)的记录，您确定覆盖该条记录吗？", preferredStyle: UIAlertControllerStyle.Alert)
-                    let okAction = UIAlertAction(title: "确认", style: UIAlertActionStyle.Default, handler:{
-                        (action: UIAlertAction!) -> Void in
+            if self.tagRecord!.isExit {
+                let alertController = UIAlertController(title: "温馨提示", message: "已存在编号为\(self.tagRecord!.registNumber)的记录，您确定覆盖该条记录吗？", preferredStyle: UIAlertControllerStyle.Alert)
+                let okAction = UIAlertAction(title: "确认", style: UIAlertActionStyle.Default, handler:{
+                    (action: UIAlertAction!) -> Void in
+                    self.dismissViewControllerAnimated(true, completion: {
+                        self.synDealImage()
                         self.tagRecord!.updateDb()
                     })
-                    let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
-                    alertController.addAction(okAction)
-                    alertController.addAction(cancelAction)
-                    self.presentViewController(alertController, animated: true, completion: nil)
-                }
-                else {
+                })
+                let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+                alertController.addAction(okAction)
+                alertController.addAction(cancelAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+            else {
+                self.dismissViewControllerAnimated(true, completion: {
+                    self.synDealImage()
                     self.tagRecord!.insertToDb()
-                }
-
-            })
+                })
+            }
+        }
+    }
+    func synDealImage(){
+        if self.img1Btn.tag == 111 {
+            HYImage.shareInstance.deleteFileForName(self.tagRecord!.imgStr1Name)
+            self.tagRecord!.imgStr1Name = HYImage.shareInstance.imageToSave(self.img1Btn.backgroundImageForState(.Normal)!)!
+        }
+        if self.img2Btn.tag == 111 {
+            HYImage.shareInstance.deleteFileForName(self.tagRecord!.imgStr2Name)
+            self.tagRecord!.imgStr2Name = HYImage.shareInstance.imageToSave(self.img2Btn.backgroundImageForState(.Normal)!)!
+        }
+        if self.img3Btn.tag == 111 || self.image3 != nil {
+            HYImage.shareInstance.deleteFileForName(self.tagRecord!.imgStr3Name)
+            self.tagRecord!.imgStr3Name = HYImage.shareInstance.imageToSave(self.img3Btn.backgroundImageForState(.Normal)!)!
         }
     }
     func loadTagData () {
         if tagRecord != nil {
-            self.areaComboBox.setTitle(tagRecord?.area, forState: .Normal)
+            self.areaComboBox.setTitle(tagRecord!.area != "" ? tagRecord!.area : "武侯区", forState: .Normal)
             let isUse = tagRecord?.eleStopFlag == "0" ? "在用" : "停用"
             self.useComboBox.setTitle(isUse, forState: .Normal)
             self.registNumberTxt.text = tagRecord?.registNumber
@@ -199,12 +200,15 @@ class TagInstallViewController : UIViewController,HYBottomToolBarButtonClickDele
             
             if img1 != nil {
                self.img1Btn.setBackgroundImage(img1, forState: .Normal)
+               self.img1Btn.tag = 111
             }
             if img2 != nil {
                 self.img2Btn.setBackgroundImage(img2, forState: .Normal)
+                self.img2Btn.tag = 111
             }
             if image3 != nil {
                 self.img3Btn.setBackgroundImage(image3, forState: .Normal)
+                self.img3Btn.tag = 111
             }
             else{
                 self.registNumberTxt.enabled = false
@@ -237,9 +241,6 @@ class TagInstallViewController : UIViewController,HYBottomToolBarButtonClickDele
         self.presentViewController(self.qrviewcontroller!, animated: true, completion: nil)
     }
     func isInfoCorrect()->Bool{
-//        if self.areaComboBox.currentTitle != "" && self.useComboBox.currentTitle != "" && self.registNumberTxt.text! != "" && self.useNumberTxt.text! != "" && self.registCodeTxt.text! != "" && self.addressTxt.text! != "" && self.buildingNameTxt.text! != "" && self.buildingTxt.text! != "" && self.unitTxt.text! != "" {
-//            return true
-//        }
         if self.registNumberTxt.text! != "" &&  self.addressTxt.text! != "" && self.buildingNameTxt.text! != "" && self.img1Btn.tag == 111 && self.img2Btn.tag == 111 {
             return true
         }

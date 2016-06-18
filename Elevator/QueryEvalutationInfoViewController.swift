@@ -45,8 +45,6 @@ class QueryEvalutationInfoViewController: UIViewController,HYBottomToolBarButton
                  .responseJSON { response in
                     HYProgress.dismiss()
                     if response.result.isSuccess {
-                        print(response.result.value!)
-                        
                         if response.result.value! as! Int == 0 {
                             HYProgress.showErrorWithStatus("评价失败！")
                         }

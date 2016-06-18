@@ -24,18 +24,21 @@ class QueryManualViewController : UIViewController,HYBottomToolBarButtonClickDel
                 Alamofire.request(.GET, "http://cddt.zytx-robot.com/twoCodemobileweb/sjba/tcIsValidMobile.do", parameters: ["registNumber": self.twoCodeIdTxt.text!])
                     .responseJSON { response in
                         HYProgress.dismiss()
-                        if (response.result.value! as! Int) == 1 {
-                            let queryStoryBoard = UIStoryboard(name:"Query", bundle: nil)
-                            let queryViewController = queryStoryBoard.instantiateViewControllerWithIdentifier("QueryInfoViewController") as! QueryInfoViewController
-                            let twoCodeId = self.twoCodeIdTxt.text! + "000000000000000000"
-                            queryViewController.twoCodeId = twoCodeId
-                            queryViewController.qrcodeTitle = self.twoCodeIdTxt.text!
-                            self.showViewController(queryViewController, sender: self)
-                            QueryRecord(title: self.twoCodeIdTxt.text!, twoCodeId: twoCodeId).updateDb()
+                        if response.result.isSuccess {
+                            if (response.result.value! as! Int) == 1 {
+                                let queryStoryBoard = UIStoryboard(name:"Query", bundle: nil)
+                                let queryViewController = queryStoryBoard.instantiateViewControllerWithIdentifier("QueryInfoViewController") as! QueryInfoViewController
+                                let twoCodeId = self.twoCodeIdTxt.text! + "000000000000000000"
+                                queryViewController.twoCodeId = twoCodeId
+                                queryViewController.qrcodeTitle = self.twoCodeIdTxt.text!
+                                self.showViewController(queryViewController, sender: self)
+                                QueryRecord(title: self.twoCodeIdTxt.text!, twoCodeId: twoCodeId).updateDb()
+                            }
+                            else {
+                                HYProgress.showErrorWithStatus("不存在该编号！")
+                            }
                         }
-                        else {
-                            HYProgress.showErrorWithStatus("不存在该编号！")
-                        }
+                        HYProgress.showErrorWithStatus("网络错误！")
                 }
             }
         }

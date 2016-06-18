@@ -109,6 +109,10 @@ class Tag:NSObject,Mappable,SwiftAlertViewDelegate {
                 HYProgress.showErrorWithStatus("您未登录，不能请先登录！")
                 return
             }
+            guard loginUser!.companyList!.count > 0 else {
+                HYProgress.showErrorWithStatus("您不属于任何公司，不能进行此操作！")
+                return
+            }
             let image1 = HYImage.shareInstance.getImageForName(self.imgStr1Name)
             let imgStr1:String = HYImage.get64encodingStr(image1)
             let fileLen1 = imgStr1.characters.count

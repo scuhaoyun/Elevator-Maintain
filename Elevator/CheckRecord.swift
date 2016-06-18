@@ -141,7 +141,6 @@ class CheckRecord: Mappable {
                 "deviceId2":self.deviceId2,
                 ]).responseJSON { response in
                     HYProgress.dismiss()
-                    print(response.request?.description)
                     if response.result.value != nil {
                         switch (response.result.value! as! Int){
                         case 1 :
@@ -158,7 +157,6 @@ class CheckRecord: Mappable {
                         }
                     }
                     else{
-                        print(response.result.error?.description)
                         HYProgress.showErrorWithStatus("网络错误或该条记录有误!")
                     }
             }

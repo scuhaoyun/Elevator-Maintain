@@ -114,8 +114,6 @@ class StartMaintainViewController : UIViewController,HYBottomToolBarButtonClickD
         
     }
     @IBAction func startBtnClick(sender: UIButton) {
-        let maitainStoryBoard = UIStoryboard(name:"Maintain", bundle: nil)
-        let maintainDetailInfoController = maitainStoryBoard.instantiateViewControllerWithIdentifier("MaintainDetailInfoController") as! MaintainDetailInfoController
         updateMaintainRecord()
         if self.maintainRecord!.startTime == "" {
             self.maintainRecord!.startTime = Constants.curruntTimeString
@@ -127,7 +125,12 @@ class StartMaintainViewController : UIViewController,HYBottomToolBarButtonClickD
             let alertController = UIAlertController(title: "温馨提示", message: "已存在编号为\(self.maintainRecord!.twoCodeId[0...5])的记录，您确定覆盖该条记录吗？", preferredStyle: UIAlertControllerStyle.Alert)
             let okAction = UIAlertAction(title: "确认", style: UIAlertActionStyle.Default, handler:{
                 (action: UIAlertAction!) -> Void in
-                self.maintainRecord!.updateDb()
+                if self.maintainRecord!.updateDb() {
+                   self.goToMaintainVC()
+                }
+                else{
+                    HYProgress.showErrorWithStatus("更新数据库出错!")
+                }
             })
             let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
             alertController.addAction(okAction)
@@ -136,8 +139,13 @@ class StartMaintainViewController : UIViewController,HYBottomToolBarButtonClickD
         }
         else {
             self.maintainRecord!.insertToDb()
+            goToMaintainVC()
         }
 
+    }
+    func goToMaintainVC(){
+        let maitainStoryBoard = UIStoryboard(name:"Maintain", bundle: nil)
+        let maintainDetailInfoController = maitainStoryBoard.instantiateViewControllerWithIdentifier("MaintainDetailInfoController") as! MaintainDetailInfoController
         maintainDetailInfoController.maintainRecord = self.maintainRecord
         maintainDetailInfoController.onCompletion = {
             newMaintainRecord in
@@ -150,6 +158,7 @@ class StartMaintainViewController : UIViewController,HYBottomToolBarButtonClickD
         }
         self.showViewController(maintainDetailInfoController, sender: self)
         HYToast.showString("正在运维...")
+
     }
     @IBAction func endMaintainBtnClick(sender: UIButton) {
         guard qrcode != nil else {
@@ -192,7 +201,9 @@ class StartMaintainViewController : UIViewController,HYBottomToolBarButtonClickD
         }
         updateMaintainRecord()
         self.maintainRecord!.remark = self.beizhuTxt.text
-        self.maintainRecord!.state = "已完成"
+        if maintainRecord!.endTime != "" {
+            self.maintainRecord!.state = "已完成"
+        }
         self.maintainRecord?.updateDb()
         self.dismissViewControllerAnimated(true, completion: nil)
     }

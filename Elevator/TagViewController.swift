@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-
+import ObjectMapper
 enum SearchType {
     case remoteSearch
     case localSearch
@@ -117,11 +117,14 @@ class TagViewController : UIViewController,HYBottomToolBarButtonClickDelegate,Sw
                         }
                         else {
                             let parameters = ["ywcompayId":loginUser!.ywcompayId!,"address":contentView.addressTxt.text! ,"buildingName":contentView.buildingNameTxt.text!,"building":contentView.buidingTxt.text!,"unit":contentView.unitTxt.text!]
-                            remoteSearch("http://cddt.zytx-robot.com/twoCodemobileweb/sjba/queryddeTaskListMobile.do",parameters: parameters as! Dictionary<String, String>)
+                            remoteSearch("http://cddt.zytx-robot.com/twoCodemobileweb/sjba/newqueryddeTaskListMobile.do",parameters: parameters as! Dictionary<String, String>)
                         }
                     }
+                    else if loginUser == nil {
+                        HYProgress.showErrorWithStatus("您未登录,不能进行该操作！")
+                    }
                     else {
-                        HYProgress.showErrorWithStatus("您未登录或您的公司不支持！")
+                        HYProgress.showErrorWithStatus("您的公司不是运维公司，不能进行该操作！")
                     }
                     break
                 case .pasteSearch:
@@ -247,23 +250,32 @@ class TagViewController : UIViewController,HYBottomToolBarButtonClickDelegate,Sw
         if HYNetwork.isConnectToNetwork(self) {
             HYProgress.showWithStatus("正在查询，请稍等！")
             Alamofire.request(.GET, urlString, parameters: parameters)
-                .responseArray { (response: Response<[Tag], NSError>) in
+                .responseJSON{ response in
                     HYProgress.dismiss()
-                    if response.result.isSuccess && response.result.value?.count > 0 {
-                        HYToast.showString("获取成功！")
-                        self.tagDatas = response.result.value!
-                        HYDefaults[.tagInfo] = [parameters["address"]!,parameters["buildingName"]!,parameters["building"]!,parameters["unit"]!]
-                        for tag in self.tagDatas {
-                            if tag.isExit {
-                                tag.updateDb()
+                    if response.result.isSuccess {
+                        if HYJSON(response.result.value!)["stotal"].int == 0 {
+                            self.tagDatas = Mapper<Tag>().mapArray(HYJSON(response.result.value!)["listArray"].arrayObject)!
+                            if self.tagDatas.count > 0 {
+                                HYToast.showString("获取成功！")
+                                HYDefaults[.tagInfo] = [parameters["address"]!,parameters["buildingName"]!,parameters["building"]!,parameters["unit"]!]
+                                for tag in self.tagDatas {
+                                    if tag.isExit {
+                                        tag.updateDb()
+                                    }
+                                    else {
+                                        tag.insertToDb()
+                                    }
+                                }
+
                             }
-                            else {
-                                tag.insertToDb()
+                            else{
+                                HYToast.showString("没有可执行的任务！")
                             }
                         }
-                    }
-                    else if response.result.value?.count == 0 {
-                        HYToast.showString("没有可执行的任务！")
+                        else {
+                            HYToast.showString("结果条数过多，请增加搜索条件重新搜索！")
+                        }
+                        
                     }
                     else{
                         HYToast.showString("获取失败")
