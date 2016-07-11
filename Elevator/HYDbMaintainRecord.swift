@@ -137,7 +137,7 @@ class HYDbMaintainRecord:NSObject {
     func update(object:MaintainRecord)-> Bool {
         if object.isExit {
             do {
-                let row = maintainRecordTable.filter(startTime == object.startTime)
+                let row = maintainRecordTable.filter(twoCodeId == object.twoCodeId)
                 for record in convertToArray(db.prepare(row)) {
                     if object.imgName != record.imgName {
                         HYImage.shareInstance.deleteFileForName(record.imgName)

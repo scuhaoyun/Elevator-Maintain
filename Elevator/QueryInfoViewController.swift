@@ -27,10 +27,10 @@ class QueryInfoViewController : UIViewController,HYBottomToolBarButtonClickDeleg
         self.twoCodeIdTxt.text = self.qrcodeTitle
     }
     @IBAction func elevatorInfoBtnClick(sender: UIButton) {
-        loadElevatorInfo("http://cddt.zytx-robot.com/twoCodemobileweb/sjba/queryEleInfoMobile1.do", segueStr: "elevatorInfo")
+        loadElevatorInfo(URLStrings.queryEleInfoMobile1, segueStr: "elevatorInfo")
     }
     @IBAction func maintainInfoBtnClick(sender: UIButton) {
-        loadElevatorInfo("http://cddt.zytx-robot.com/twoCodemobileweb/sjba/queryEleInfoMobile.do", segueStr: "maintainInfo")
+        loadElevatorInfo(URLStrings.queryEleInfoMobile, segueStr: "maintainInfo")
     }
     @IBAction func EvaluationBtnClick(sender: UIButton) {
         let queryStoryboard = UIStoryboard(name:"Query", bundle: nil)

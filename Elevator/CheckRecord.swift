@@ -128,7 +128,7 @@ class CheckRecord: Mappable {
                 return
             }
             HYProgress.showWithStatus("正在上传，请稍后！")
-            Alamofire.request(.POST, "http://cddt.zytx-robot.com/twoCodemobileweb/sjba/ddEleShenHeInfoUpTcMobile.do", parameters: [
+            Alamofire.request(.POST, URLStrings.ddEleShenHeInfoUpTcMobile, parameters: [
                 "pid":self.pid,
                 "userId":"\(loginUser!.userId!)",
                 "role":"\(loginUser!.role!)",

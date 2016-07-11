@@ -44,7 +44,12 @@ class HYImage:NSObject {
     }
     static func get64encodingStr(image:UIImage?)-> String {
         if image != nil {
-           return (UIImageJPEGRepresentation(image!, 1.0)?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength))!
+            print(BASE64Encoder.encode(UIImageJPEGRepresentation(image!, 1.0)!))
+            return BASE64Encoder.encode(UIImageJPEGRepresentation(image!, 1.0)!)
+            
+           //let data = GTMBase64.encodeData(UIImageJPEGRepresentation(image!, 1.0)!)
+           // return GTMBase64.stringByEncodingData(data)
+           //return (UIImageJPEGRepresentation(image!, 1.0)?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength))!
         }
         else {
             return ""

@@ -65,7 +65,7 @@ class TagViewController : UIViewController,HYBottomToolBarButtonClickDelegate,Sw
         let tagInfo = HYDefaults[.tagInfo]
         if tagInfo != nil {
             let parameters = ["ywcompayId":loginUser!.ywcompayId!,"address":tagInfo![0],"buildingName":tagInfo![1],"building":tagInfo![2],"unit":tagInfo![3]]
-            remoteSearch("http://cddt.zytx-robot.com/twoCodemobileweb/sjba/queryddeTaskListMobile.do",parameters: parameters as! Dictionary<String, String>)
+            remoteSearch(URLStrings.queryddeTaskListMobile,parameters: parameters as! Dictionary<String, String>)
         }
         else{
             curruntTasksLabel.text = "当前任务: 0"
@@ -117,7 +117,7 @@ class TagViewController : UIViewController,HYBottomToolBarButtonClickDelegate,Sw
                         }
                         else {
                             let parameters = ["ywcompayId":loginUser!.ywcompayId!,"address":contentView.addressTxt.text! ,"buildingName":contentView.buildingNameTxt.text!,"building":contentView.buidingTxt.text!,"unit":contentView.unitTxt.text!]
-                            remoteSearch("http://cddt.zytx-robot.com/twoCodemobileweb/sjba/newqueryddeTaskListMobile.do",parameters: parameters as! Dictionary<String, String>)
+                            remoteSearch(URLStrings.newqueryddeTaskListMobile,parameters: parameters as! Dictionary<String, String>)
                         }
                     }
                     else if loginUser == nil {
@@ -134,7 +134,7 @@ class TagViewController : UIViewController,HYBottomToolBarButtonClickDelegate,Sw
                     }
                     else {
                         let parameters = ["address":contentView.addressTxt.text! ,"buildingName":contentView.buildingNameTxt.text!]
-                        getPastedTagInfo("http://cddt.zytx-robot.com/twoCodemobileweb/sjba/queryEleInfoByAddressTcMobile2.do",parameters: parameters)
+                        getPastedTagInfo(URLStrings.queryEleInfoByAddressTcMobile2,parameters: parameters)
                     }
                  break
             }
@@ -312,7 +312,7 @@ class TagViewController : UIViewController,HYBottomToolBarButtonClickDelegate,Sw
             self.totalTasksLabel.text = "总的任务: 0"
             return
         }
-        Alamofire.request(.GET, "http://cddt.zytx-robot.com/twoCodemobileweb/sjba/queryTaskTotalMobile.do", parameters: ["ywcompayId":loginUser!.ywcompayId!])
+        Alamofire.request(.GET, URLStrings.queryTaskTotalMobile, parameters: ["ywcompayId":loginUser!.ywcompayId!])
             .responseJSON{ (response: Response<AnyObject, NSError>) in
                 HYProgress.dismiss()
                 if response.result.isSuccess {

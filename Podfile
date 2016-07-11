@@ -19,6 +19,7 @@ pod 'JLToast', '~> 1.3'
 pod 'KVNProgress', '~> 2.2'
 pod 'INTULocationManager', '~> 4.1'
 pod 'KMPlaceholderTextView', '~> 1.1.1'
+pod 'Siren'
 end
 
 

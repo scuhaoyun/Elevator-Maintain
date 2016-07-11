@@ -69,6 +69,7 @@ class MainViewController : UIViewController,HYBottomToolBarButtonClickDelegate {
                         let imageName = HYImage.shareInstance.imageToSave(scanedImage!)
                         if imageName != nil {
                              maintainRecord.imgName = imageName!
+                             print(imageName!)
                         }
                     }
                     let maintainStoryBoard = UIStoryboard(name:"Maintain", bundle: nil)

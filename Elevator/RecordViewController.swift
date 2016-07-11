@@ -39,10 +39,10 @@ class RecordViewController : UIViewController {
         for subview in self.view.subviews {
             subview.removeFromSuperview()
         }
-        let VCIDs : [String] = ["QueryRecordViewController", "MaintainRecordViewController", "TagRecordViewController", "CheckRecordViewController"]
-        var buttonTitles : [String] = ["查询记录", "运维记录", "标签记录", "核查记录"]
+        let VCIDs : [String] = ["QueryRecordViewController", "MaintainRecordViewController", "TagRecordViewController"]
+        var buttonTitles : [String] = ["查询记录", "运维记录", "标签记录"]
         if UIScreen.mainScreen().bounds.size.width == 320 {
-            buttonTitles = ["查询", "运维", "标签", "核查"]
+            buttonTitles = ["查询", "运维", "标签"]
         }
         var frame = self.view.frame
         frame.origin.y += 22

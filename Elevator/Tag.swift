@@ -129,7 +129,7 @@ class Tag:NSObject,Mappable,SwiftAlertViewDelegate {
                 return
             }
             HYProgress.showWithStatus("正在上传，请稍后！")
-            Alamofire.request(.POST, "http://cddt.zytx-robot.com/twoCodemobileweb/sjba/addpasteddeinfoMobile.do", parameters: [
+            Alamofire.request(.POST, URLStrings.addpasteddeinfoMobile, parameters: [
                 "pid":self.pid,
                 "userId":"\(loginUser!.userId!)",
                 "role":"\(loginUser!.role!)",

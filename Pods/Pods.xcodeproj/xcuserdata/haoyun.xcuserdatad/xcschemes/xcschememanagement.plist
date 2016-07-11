@@ -74,6 +74,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Siren.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftQRCode.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -97,7 +102,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0BAC11827A61505378E6A0ED88906D1E</key>
+		<key>064ADEEE09F71D65E458E0094B368FB3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1028530C5D115D21444072A711DDE901</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>115A0D8F06E6994B7FB4E473A95EDE92</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,7 +122,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>37EF1D4B25F55398C3B7C9279EFBBCDD</key>
+		<key>26501D8364D85D23D440DE5B098F1490</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,22 +132,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4E06126D291719E68C3E7F8E5BCE899C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5148612836463E4200A4A0F6114DB51E</key>
+		<key>69CAE735672E071B8374C6AA3715EA3A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>892FE5BFDD0FD8B38E22D76135459FE4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>910C4E07D2304D278901C5EFE59B10C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,17 +152,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B7F8577C14160738785E1ADACA1D429C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C45617AE30880D799B69DC5239F8C61F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C5412A7A13790A4AF88C3BA6FAD1B1D3</key>
+		<key>C1E6EF5E6926ABEB1D278E79960DD57B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -167,7 +162,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>D9AC78412479EBB5C01DE209F43BC92E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>EC25B770E2E786F47106EE8F013163EA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F6B77E7C74D3E9295650E8765A6A0017</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA0C24A5F74C14CA0EB4AE06C5627B15</key>
 		<dict>
 			<key>primary</key>
 			<true/>

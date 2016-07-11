@@ -41,7 +41,7 @@ class QueryEvalutationInfoViewController: UIViewController,HYBottomToolBarButton
     @IBAction func submitBtnClick(sender: UIButton) {
         if HYNetwork.isConnectToNetwork(self) {
             HYProgress.showWithStatus("正在提交，请稍等！")
-            Alamofire.request(.GET, "http://cddt.zytx-robot.com/twoCodemobileweb/sjba/remarkAddMobile.do", parameters: ["twoCodeId":twoCodeId!,"remarkLevel":remarkLevel,"remarkInfo":self.messageTxt.text!])
+            Alamofire.request(.GET, URLStrings.remarkAddMobile, parameters: ["twoCodeId":twoCodeId!,"remarkLevel":remarkLevel,"remarkInfo":self.messageTxt.text!])
                  .responseJSON { response in
                     HYProgress.dismiss()
                     if response.result.isSuccess {
@@ -65,7 +65,7 @@ class QueryEvalutationInfoViewController: UIViewController,HYBottomToolBarButton
     @IBAction func historyBtnClick(sender: UIButton) {
         if HYNetwork.isConnectToNetwork(self) {
             HYProgress.showWithStatus("正在获取，请稍等！")
-            Alamofire.request(.GET, "http://cddt.zytx-robot.com/twoCodemobileweb/sjba/remarkListMobile.do", parameters: ["twoCodeId":twoCodeId!])
+            Alamofire.request(.GET, URLStrings.remarkListMobile, parameters: ["twoCodeId":twoCodeId!])
                 .responseArray { (response: Response<[RemarkInfo], NSError>) in
                     HYProgress.dismiss()
                     if response.result.isSuccess {

@@ -21,7 +21,7 @@ class QueryManualViewController : UIViewController,HYBottomToolBarButtonClickDel
         if isInfoCorrect() {
             if HYNetwork.isConnectToNetwork(self) {
                 HYProgress.showWithStatus("正在查询，请稍等！")
-                Alamofire.request(.GET, "http://cddt.zytx-robot.com/twoCodemobileweb/sjba/tcIsValidMobile.do", parameters: ["registNumber": self.twoCodeIdTxt.text!])
+                Alamofire.request(.GET, URLStrings.tcIsValidMobile, parameters: ["registNumber": self.twoCodeIdTxt.text!])
                     .responseJSON { response in
                         HYProgress.dismiss()
                         if response.result.isSuccess {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Siren
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -23,8 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.rootViewController = loginViewController
         self.window!.makeKeyAndVisible()
         
-        print(Location.shareInstance.currentLocationX)
-        print(Location.shareInstance.currentLocationY)
+        let siren = Siren.sharedInstance
+        siren.alertType = SirenAlertType.Option
+        Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.ChineseSimplified
+        siren.checkVersion(.Immediately)
+//        print(Location.shareInstance.currentLocationX)
+//        print(Location.shareInstance.currentLocationY)
         return true
     }
 
@@ -40,16 +45,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+         Siren.sharedInstance.checkVersion(.Immediately)
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        Siren.sharedInstance.checkVersion(.Daily)
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 

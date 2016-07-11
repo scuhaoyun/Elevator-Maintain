@@ -251,7 +251,7 @@ class CheckInfoViewController: UIViewController,HYBottomToolBarButtonClickDelega
        
             if HYNetwork.isConnectToNetwork(self) {
                 HYProgress.showWithStatus("正在查询，请稍等!")
-                Alamofire.request(.GET, "http://cddt.zytx-robot.com/twoCodemobileweb/sjba/queryddEleShenHeInfoTcMobile.do", parameters: ["registNumber": registNumber])
+                Alamofire.request(.GET, URLStrings.queryddEleShenHeInfoTcMobile, parameters: ["registNumber": registNumber])
                     .responseArray { (response: Response<[CheckRecord], NSError>) in
                         HYProgress.dismiss()
                         if response.result.isSuccess && response.result.value!.count > 0{

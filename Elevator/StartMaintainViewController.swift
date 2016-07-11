@@ -82,24 +82,28 @@ class StartMaintainViewController : UIViewController,HYBottomToolBarButtonClickD
         updateConstraints()
         maintaiTypePicker?.delegate = self
         elevatorTypePicker?.delegate = self
-       
     }
    
     @IBAction func sureBtnClick(sender: UIButton) {
         if isInfoCorrect() {
             if HYNetwork.isConnectToNetwork(self) {
                 HYProgress.showWithStatus("正在查询，请稍等！")
-                   Alamofire.request(.GET,"http://cddt.zytx-robot.com/twoCodemobileweb/sjba/tcIsValidMobile.do", parameters: ["registNumber": self.twoCodeIdTxt.text!])
+                   Alamofire.request(.GET,URLStrings.tcIsValidMobile, parameters: ["registNumber": self.twoCodeIdTxt.text!])
                        .responseJSON { response in
                         HYProgress.dismiss()
-                        if (response.result.value! as! Int) == 1 {
-                            self.startMaintainBtn.enabled = true
-                            var newqrcode = QRcode()
-                            newqrcode.QR6String = self.twoCodeIdTxt.text!
-                            self.qrcode = newqrcode
+                        if response.result.isSuccess {
+                            if (response.result.value! as! Int) == 1 {
+                                self.startMaintainBtn.enabled = true
+                                var newqrcode = QRcode()
+                                newqrcode.QR6String = self.twoCodeIdTxt.text!
+                                self.qrcode = newqrcode
+                            }
+                            else {
+                                HYProgress.showErrorWithStatus("不存在该编号！")
+                            }
                         }
                         else {
-                            HYProgress.showErrorWithStatus("不存在该编号！")
+                            HYProgress.showErrorWithStatus("网络超时！")
                         }
                     }
             }

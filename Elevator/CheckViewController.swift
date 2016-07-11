@@ -53,7 +53,7 @@ class CheckViewController : UIViewController,HYBottomToolBarButtonClickDelegate,
         let checkInfo = HYDefaults[.checkInfo]
         if checkInfo != nil {
             let parameters = ["address": checkInfo![0],"buildingName":checkInfo![1]]
-           remoteSearch("http://cddt.zytx-robot.com/twoCodemobileweb/sjba/queryddEleShenHeInfoTcMobile.do", parameters: parameters)
+           remoteSearch(URLStrings.queryddEleShenHeInfoTcMobile, parameters: parameters)
         }
         else {
             HYToast.showString("没有可执行的任务！")
@@ -86,7 +86,7 @@ class CheckViewController : UIViewController,HYBottomToolBarButtonClickDelegate,
             //远程搜索
             if buttonIndex == 1 && !isLocalSearch{
                 let parameters = ["address": contentView.addressTxt.text!,"buildingName":contentView.buildingNameTxt.text!]
-                remoteSearch("http://cddt.zytx-robot.com/twoCodemobileweb/sjba/newqueryddEleShenHeInfoTcMobile.do",parameters: parameters)
+                remoteSearch(URLStrings.newqueryddEleShenHeInfoTcMobile,parameters: parameters)
             }
             //本地搜索
             if buttonIndex == 1 && isLocalSearch {

@@ -57,7 +57,7 @@ class LoginViewController : UIViewController{
                 HYProgress.showWithStatus("正在验证用户名和密码，稍等！")
                 HYDefaults[.username] = self.usernameTxt.text
                 HYDefaults[.password] = self.passwordTxt.text
-                Alamofire.request(.GET, "http://cddt.zytx-robot.com/twoCodemobileweb/tcnbdlogin.do", parameters: ["account": self.usernameTxt.text!,"password":self.passwordTxt.text!])
+                Alamofire.request(.GET, URLStrings.tcnbdlogin, parameters: ["account": self.usernameTxt.text!,"password":self.passwordTxt.text!])
                     .responseString(encoding: NSUTF8StringEncoding){ response in
                         if response.result.value != nil {
                             loginUser = Mapper<User>().map(response.result.value!)
@@ -66,7 +66,7 @@ class LoginViewController : UIViewController{
                                 isLogin = true
                                 if loginUser!.binding! == 1 {
                                     HYProgress.showWithStatus("正在绑定手机，稍等！")
-                                    Alamofire.request(.GET, "http://cddt.zytx-robot.com/twoCodemobileweb/sjba/tcBindAddMobile.do", parameters: ["account": self.usernameTxt.text!,"password":self.passwordTxt.text!,"iMSI":Constants.iMSI,"iMEI":Constants.iMEI])
+                                    Alamofire.request(.GET, URLStrings.tcBindAddMobile, parameters: ["account": self.usernameTxt.text!,"password":self.passwordTxt.text!,"iMSI":Constants.iMSI,"iMEI":Constants.iMEI])
                                          .responseJSON { response in
                                             HYProgress.dismiss()
                                             if (response.result.value! as! Int) == 0 {

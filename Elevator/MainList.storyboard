@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1808" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -61,13 +61,6 @@
                                                     <segue destination="9nO-u3-wNC" kind="presentation" id="PsS-pQ-fMj"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pck-DR-e0r">
-                                                <rect key="frame" x="125" y="305" width="150" height="45"/>
-                                                <state key="normal" backgroundImage="check.png"/>
-                                                <connections>
-                                                    <segue destination="WYM-yP-FCA" kind="presentation" id="n9D-MR-ITF"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vg5-dt-WTb">
                                                 <rect key="frame" x="125" y="25" width="150" height="45"/>
                                                 <constraints>
@@ -87,7 +80,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a66-AN-FCe">
-                                                <rect key="frame" x="125" y="375" width="150" height="45"/>
+                                                <rect key="frame" x="125" y="305" width="150" height="45"/>
                                                 <state key="normal" backgroundImage="task.png"/>
                                                 <connections>
                                                     <action selector="taskBtnClick:" destination="ZcU-VQ-shD" eventType="touchUpInside" id="FZ7-zI-PkP"/>
@@ -96,71 +89,79 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="Pck-DR-e0r" firstAttribute="width" secondItem="a66-AN-FCe" secondAttribute="width" id="0IX-RL-Fe6"/>
                                             <constraint firstItem="Tmi-QR-LOH" firstAttribute="height" secondItem="MX6-6W-25c" secondAttribute="height" id="1dw-Af-UoQ"/>
                                             <constraint firstItem="Tmi-QR-LOH" firstAttribute="centerX" secondItem="MX6-6W-25c" secondAttribute="centerX" id="5DJ-k0-lTZ"/>
-                                            <constraint firstItem="V1G-tI-2Zc" firstAttribute="width" secondItem="Pck-DR-e0r" secondAttribute="width" id="5dh-sc-ZSt"/>
                                             <constraint firstAttribute="height" constant="412" id="6Ec-q8-8ra">
                                                 <variation key="widthClass=compact" constant="430"/>
                                             </constraint>
-                                            <constraint firstItem="V1G-tI-2Zc" firstAttribute="height" secondItem="Pck-DR-e0r" secondAttribute="height" id="8ac-ja-eDY"/>
-                                            <constraint firstItem="Pck-DR-e0r" firstAttribute="top" secondItem="V1G-tI-2Zc" secondAttribute="bottom" constant="25" id="APY-2B-csC">
-                                                <variation key="widthClass=compact" constant="25"/>
-                                            </constraint>
+                                            <constraint firstItem="MX6-6W-25c" firstAttribute="centerX" secondItem="Vg5-dt-WTb" secondAttribute="centerX" id="A2M-9g-LD3"/>
                                             <constraint firstItem="MX6-6W-25c" firstAttribute="height" secondItem="V1G-tI-2Zc" secondAttribute="height" id="CNt-hD-jQd"/>
+                                            <constraint firstItem="Tmi-QR-LOH" firstAttribute="height" secondItem="Vg5-dt-WTb" secondAttribute="height" id="F44-yp-wK3"/>
                                             <constraint firstItem="V1G-tI-2Zc" firstAttribute="top" secondItem="Tmi-QR-LOH" secondAttribute="bottom" constant="25" id="G6t-Fv-4e2">
                                                 <variation key="widthClass=compact" constant="25"/>
                                             </constraint>
-                                            <constraint firstItem="V1G-tI-2Zc" firstAttribute="top" secondItem="Pck-DR-e0r" secondAttribute="bottom" constant="15" id="M7Q-ES-GnJ">
-                                                <variation key="widthClass=compact" constant="25"/>
-                                            </constraint>
+                                            <constraint firstItem="a66-AN-FCe" firstAttribute="centerX" secondItem="Vg5-dt-WTb" secondAttribute="centerX" id="Ki2-OW-Hon"/>
+                                            <constraint firstItem="a66-AN-FCe" firstAttribute="width" secondItem="Vg5-dt-WTb" secondAttribute="width" id="MUz-t8-i3y"/>
                                             <constraint firstItem="Tmi-QR-LOH" firstAttribute="top" secondItem="MX6-6W-25c" secondAttribute="bottom" constant="15" id="N2J-VF-90X">
                                                 <variation key="widthClass=compact" constant="25"/>
                                             </constraint>
                                             <constraint firstItem="a66-AN-FCe" firstAttribute="height" secondItem="Vg5-dt-WTb" secondAttribute="height" id="QFI-yF-Yku"/>
                                             <constraint firstItem="MX6-6W-25c" firstAttribute="centerX" secondItem="V1G-tI-2Zc" secondAttribute="centerX" id="QIo-oY-O40"/>
+                                            <constraint firstItem="MX6-6W-25c" firstAttribute="width" secondItem="Vg5-dt-WTb" secondAttribute="width" id="QWU-g8-O6b"/>
                                             <constraint firstItem="a66-AN-FCe" firstAttribute="centerX" secondItem="Vg5-dt-WTb" secondAttribute="centerX" id="QuI-X7-ibo"/>
-                                            <constraint firstItem="Pck-DR-e0r" firstAttribute="centerX" secondItem="a66-AN-FCe" secondAttribute="centerX" id="TZR-Fe-0i6"/>
                                             <constraint firstItem="a66-AN-FCe" firstAttribute="width" secondItem="Vg5-dt-WTb" secondAttribute="width" id="TyE-jk-Opw"/>
                                             <constraint firstItem="a66-AN-FCe" firstAttribute="top" secondItem="Vg5-dt-WTb" secondAttribute="bottom" constant="15" id="UQl-1S-sAA">
                                                 <variation key="widthClass=compact" constant="25"/>
                                             </constraint>
-                                            <constraint firstItem="Pck-DR-e0r" firstAttribute="top" secondItem="a66-AN-FCe" secondAttribute="bottom" constant="15" id="Uh1-hf-wPA">
-                                                <variation key="widthClass=compact" constant="25"/>
-                                            </constraint>
                                             <constraint firstItem="MX6-6W-25c" firstAttribute="width" secondItem="V1G-tI-2Zc" secondAttribute="width" id="Yc4-TV-ryB"/>
-                                            <constraint firstItem="a66-AN-FCe" firstAttribute="top" secondItem="Pck-DR-e0r" secondAttribute="bottom" constant="25" id="Z5Y-Z7-BQB">
-                                                <variation key="widthClass=compact" constant="25"/>
-                                            </constraint>
                                             <constraint firstItem="Vg5-dt-WTb" firstAttribute="top" secondItem="poX-s0-dEd" secondAttribute="top" constant="25" id="Z89-Ji-Dy6">
                                                 <variation key="widthClass=compact" constant="25"/>
                                             </constraint>
-                                            <constraint firstItem="V1G-tI-2Zc" firstAttribute="centerX" secondItem="Pck-DR-e0r" secondAttribute="centerX" id="bd1-Te-OlX"/>
+                                            <constraint firstItem="Tmi-QR-LOH" firstAttribute="width" secondItem="Vg5-dt-WTb" secondAttribute="width" id="ZlP-2z-Msb"/>
+                                            <constraint firstItem="a66-AN-FCe" firstAttribute="top" secondItem="V1G-tI-2Zc" secondAttribute="bottom" constant="25" id="aWo-g2-425"/>
                                             <constraint firstAttribute="height" constant="430" id="bxJ-77-7QU"/>
+                                            <constraint firstItem="a66-AN-FCe" firstAttribute="height" secondItem="Vg5-dt-WTb" secondAttribute="height" id="cit-jQ-hNv"/>
+                                            <constraint firstItem="Tmi-QR-LOH" firstAttribute="centerX" secondItem="Vg5-dt-WTb" secondAttribute="centerX" id="dKJ-uH-ju9"/>
+                                            <constraint firstItem="Tmi-QR-LOH" firstAttribute="top" secondItem="MX6-6W-25c" secondAttribute="bottom" constant="25" id="dcL-zt-m0t"/>
                                             <constraint firstItem="Vg5-dt-WTb" firstAttribute="centerX" secondItem="poX-s0-dEd" secondAttribute="centerX" id="gtj-Ub-dDj"/>
                                             <constraint firstItem="Tmi-QR-LOH" firstAttribute="width" secondItem="MX6-6W-25c" secondAttribute="width" id="lDd-4n-sV3"/>
                                             <constraint firstItem="MX6-6W-25c" firstAttribute="top" secondItem="Vg5-dt-WTb" secondAttribute="bottom" constant="25" id="lHM-QC-pYw">
                                                 <variation key="widthClass=compact" constant="25"/>
                                             </constraint>
+                                            <constraint firstItem="V1G-tI-2Zc" firstAttribute="width" secondItem="Vg5-dt-WTb" secondAttribute="width" id="lnt-2U-HVW"/>
                                             <constraint firstItem="Tmi-QR-LOH" firstAttribute="top" secondItem="MX6-6W-25c" secondAttribute="bottom" constant="25" id="nRd-kT-bi6">
                                                 <variation key="widthClass=compact" constant="25"/>
                                             </constraint>
+                                            <constraint firstItem="MX6-6W-25c" firstAttribute="height" secondItem="Vg5-dt-WTb" secondAttribute="height" id="nzG-gT-mRt"/>
+                                            <constraint firstItem="MX6-6W-25c" firstAttribute="top" secondItem="Vg5-dt-WTb" secondAttribute="bottom" constant="25" id="oli-a6-MtS"/>
                                             <constraint firstItem="MX6-6W-25c" firstAttribute="top" secondItem="V1G-tI-2Zc" secondAttribute="bottom" constant="15" id="qBx-ic-fVN">
                                                 <variation key="widthClass=compact" constant="25"/>
                                             </constraint>
+                                            <constraint firstItem="V1G-tI-2Zc" firstAttribute="centerX" secondItem="Vg5-dt-WTb" secondAttribute="centerX" id="t0a-wK-vpw"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="412" id="wNM-1l-dff"/>
-                                            <constraint firstItem="Pck-DR-e0r" firstAttribute="height" secondItem="a66-AN-FCe" secondAttribute="height" id="wxZ-Mx-rHu"/>
+                                            <constraint firstItem="V1G-tI-2Zc" firstAttribute="height" secondItem="Vg5-dt-WTb" secondAttribute="height" id="wkA-Jf-WgX"/>
                                             <constraint firstAttribute="height" constant="412" id="xdI-8c-Ym8"/>
+                                            <constraint firstItem="V1G-tI-2Zc" firstAttribute="top" secondItem="Tmi-QR-LOH" secondAttribute="bottom" constant="25" id="zo8-8y-6Lu"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="6Ec-q8-8ra"/>
                                                 <exclude reference="bxJ-77-7QU"/>
                                                 <exclude reference="wNM-1l-dff"/>
+                                                <exclude reference="CNt-hD-jQd"/>
+                                                <exclude reference="QIo-oY-O40"/>
+                                                <exclude reference="Yc4-TV-ryB"/>
+                                                <exclude reference="lHM-QC-pYw"/>
                                                 <exclude reference="qBx-ic-fVN"/>
+                                                <exclude reference="1dw-Af-UoQ"/>
+                                                <exclude reference="5DJ-k0-lTZ"/>
                                                 <exclude reference="N2J-VF-90X"/>
-                                                <exclude reference="M7Q-ES-GnJ"/>
-                                                <exclude reference="Uh1-hf-wPA"/>
+                                                <exclude reference="lDd-4n-sV3"/>
+                                                <exclude reference="nRd-kT-bi6"/>
+                                                <exclude reference="G6t-Fv-4e2"/>
+                                                <exclude reference="QFI-yF-Yku"/>
+                                                <exclude reference="QuI-X7-ibo"/>
+                                                <exclude reference="TyE-jk-Opw"/>
                                                 <exclude reference="UQl-1S-sAA"/>
                                             </mask>
                                         </variation>
@@ -293,7 +294,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9aX-hh-gT8">
                                 <rect key="frame" x="0.0" y="20" width="400" height="90"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电梯运维版 V2.4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWi-XG-jos">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电梯运维版 V1.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWi-XG-jos">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="47" id="E6V-Wt-wN1"/>
@@ -421,7 +422,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="check.png" width="530" height="144"/>
         <image name="elevator.png" width="530" height="144"/>
         <image name="mainTopBack.png" width="1080" height="373"/>
         <image name="query.png" width="530" height="144"/>

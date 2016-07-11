@@ -11,6 +11,7 @@ PODS:
   - KVNProgress (2.2.2)
   - ObjectMapper (1.0.1)
   - ReachabilitySwift (2.3.3)
+  - Siren (0.6.3)
   - SQLCipher (3.3.1):
     - SQLCipher/standard (= 3.3.1)
   - SQLCipher/common (3.3.1)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - KMPlaceholderTextView (~> 1.1.1)
   - KVNProgress (~> 2.2)
   - ReachabilitySwift (~> 2.3)
+  - Siren
   - SQLite.swift (from `https://github.com/stephencelis/SQLite.swift.git`)
   - SQLiteCipher.swift (from `https://github.com/stephencelis/SQLite.swift.git`)
   - SwiftQRCode (~> 2.0)
@@ -64,6 +66,7 @@ SPEC CHECKSUMS:
   KVNProgress: 4697347e21e37fdaa5264ebc24e377c205a50328
   ObjectMapper: 98524bac0dca46c6b3d5ee02cd410fc700ec6ce2
   ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
+  Siren: fefd8833ba21f696118611dac0fedfd2375955c2
   SQLCipher: d490d2effe735895d2204d25a154b1e722278421
   SQLite.swift: 3bda6d7bfff43e7f2cfd155509cad6d5d7189494
   SQLiteCipher.swift: 21869c22885e695ac594c06c7b61f1734772166c
@@ -71,6 +74,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyUserDefaults: 1266e9734c68bcfbac8294ee84173dc8ba6db312
 
-PODFILE CHECKSUM: 25b8c0b0e217fe34a66c1d46084083fbcb28a479
+PODFILE CHECKSUM: 1631f78898c402c2cc159b4fbb96011dea33acb6
 
 COCOAPODS: 1.0.0.beta.1

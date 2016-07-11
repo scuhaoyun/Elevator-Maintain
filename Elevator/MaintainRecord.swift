@@ -147,24 +147,25 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
             let image = HYImage.shareInstance.getImageForName(self.imgName)
             let imgStr:String = HYImage.get64encodingStr(image)
             let fileLen = imgStr.characters.count
-            guard imgStr != "" else {
-                HYProgress.showErrorWithStatus("图片不存在或已被删除，请重新拍摄！")
-                return
-            }
+//            guard imgStr != "" else {
+//                HYProgress.showErrorWithStatus("图片不存在或已被删除，请重新拍摄！")
+//                return
+//            }
+            let maintainTypeString = self.getTitleForMaintainTypeCode()!
             let location = HYDbLocation()
             (self.map_X0,self.map_Y0) = location.getFrontLocation(self.startTime)
             (self.map_X1,self.map_Y1) = location.getEndLocation(self.startTime)
             (self.map_X2,self.map_Y2) = location.getFrontLocation(self.endTime)
             HYProgress.showWithStatus("正在上传，请稍后！")
-            Alamofire.request(.POST, "http://cddt.zytx-robot.com/twoCodemobileweb/sjba/ywAddMobile3.do", parameters: [
-                "twoCodeId":self.twoCodeId,
+            Alamofire.request(.POST, URLStrings.ywAddMobile3, parameters: [
+                "twoCodeId":self.twoCodeId[0...7],
                 "userId":"\(loginUser!.userId!)",
                 "ywKind":self.ywKind,
                 "startTime":self.startTime,
                 "endTime":self.endTime,
                 "sPosition":self.sPosition,
                 "ePosition":self.ePosition,
-                "maintainTypecode":self.maintainTypecode,
+                "maintainTypecode":maintainTypeString,
                 "remark":self.remark,
                 "threedscanning":self.threedscanning,
                 "map_X0":self.map_X0,
@@ -176,8 +177,6 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
                 "ywstatusFlag":self.ywstatusFlag,
                 "imgStr":imgStr,
                 "fileLen":fileLen,
-//                "imgStr":"f",
-//                "fileLen":1,
                 "ywDetail":self.ywDetail
                 ]).responseJSON { response in
                     HYProgress.dismiss()
