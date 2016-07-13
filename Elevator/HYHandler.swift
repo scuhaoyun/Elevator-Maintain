@@ -50,5 +50,18 @@ class HYHandler {
         return newStrings
         
     }
+    class func getDate(dateString:String)->NSDate? {
+        let timeFormatter = NSDateFormatter()
+        timeFormatter.dateFormat = "yyy-MM-dd HH:mm"
+        return timeFormatter.dateFromString(dateString)
+    }
+    class func getDateDistance(smallDateString:String,bigDateString:String)-> Double? {
+        let smallDate = getDate(smallDateString)
+        let bigDate = getDate(bigDateString)
+        guard smallDate != nil && bigDate != nil else {
+            return nil
+        }
+        return (smallDate!.timeIntervalSinceDate(bigDate!))
+    }
 
 }

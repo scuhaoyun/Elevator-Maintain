@@ -33,6 +33,7 @@ class User: Mappable   {
             return nil
         }
     }
+    var account:String?
     private init (){
         
     }
@@ -70,4 +71,5 @@ class User: Mappable   {
         }
         return isSucess
     }
+    
 }

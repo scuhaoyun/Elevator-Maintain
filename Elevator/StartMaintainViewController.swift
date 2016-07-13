@@ -82,6 +82,9 @@ class StartMaintainViewController : UIViewController,HYBottomToolBarButtonClickD
         updateConstraints()
         maintaiTypePicker?.delegate = self
         elevatorTypePicker?.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
     }
    
     @IBAction func sureBtnClick(sender: UIButton) {
@@ -297,5 +300,9 @@ class StartMaintainViewController : UIViewController,HYBottomToolBarButtonClickD
       /**
     *  其他：如扩展等
     */
+    func dismissKeyboard(){
+        self.twoCodeIdTxt.resignFirstResponder()
+        self.beizhuTxt.resignFirstResponder()
+    }
 }
 

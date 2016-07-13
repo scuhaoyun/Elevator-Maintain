@@ -43,7 +43,9 @@ class TagInstallViewController : UIViewController,HYBottomToolBarButtonClickDele
         configAutoCompleteTextField()
         loadToolBar()
         loadTagData()
-
+        let tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
     }
     override func viewDidAppear(animated: Bool) {
         
@@ -258,5 +260,15 @@ class TagInstallViewController : UIViewController,HYBottomToolBarButtonClickDele
         buildingTxt.indexStr = "tag-install-building"
         unitTxt.indexStr = "tag-install-unit"
         mobileUploadbeizhuTxt.indexStr = "tag-install-beizhu"
+    }
+    func dismissKeyboard(){
+        self.registNumberTxt.resignFirstResponder()
+        self.useNumberTxt.resignFirstResponder()
+        self.registCodeTxt.resignFirstResponder()
+        self.addressTxt.resignFirstResponder()
+        self.buildingNameTxt.resignFirstResponder()
+        self.buildingTxt.resignFirstResponder()
+        self.unitTxt.resignFirstResponder()
+        self.mobileUploadbeizhuTxt.resignFirstResponder()
     }
 }

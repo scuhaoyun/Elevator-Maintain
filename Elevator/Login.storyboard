@@ -229,9 +229,9 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="a77-ve-jc4"/>
                                         <exclude reference="EkL-jO-RMK"/>
                                         <exclude reference="SZ8-er-tFt"/>
+                                        <exclude reference="a77-ve-jc4"/>
                                         <exclude reference="RQ3-Oc-k9j"/>
                                     </mask>
                                 </variation>
@@ -302,8 +302,8 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="nSr-EK-7pP"/>
                                                         <exclude reference="irH-aP-tis"/>
+                                                        <exclude reference="nSr-EK-7pP"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -334,8 +334,8 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="Qe2-ph-Pcd"/>
                                                         <exclude reference="Pcy-rX-Jck"/>
+                                                        <exclude reference="Qe2-ph-Pcd"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -366,8 +366,8 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="Tov-07-bds"/>
                                                         <exclude reference="6w0-Rd-d4P"/>
+                                                        <exclude reference="Tov-07-bds"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -382,8 +382,8 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="ZN6-BQ-jdQ"/>
                                                         <exclude reference="2b4-Nr-aMP"/>
+                                                        <exclude reference="ZN6-BQ-jdQ"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -414,8 +414,8 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="gKc-4P-Sfx"/>
                                                         <exclude reference="Beh-8q-PDc"/>
+                                                        <exclude reference="gKc-4P-Sfx"/>
                                                     </mask>
                                                 </variation>
                                             </label>

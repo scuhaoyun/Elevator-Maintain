@@ -28,4 +28,6 @@ struct URLStrings {
     static var   queryEleInfoByAddressTcMobile2 = baseURLString + "queryEleInfoByAddressTcMobile2.do"
     static var   queryTaskTotalMobile = baseURLString + "queryTaskTotalMobile.do"
     static var   tcnbdlogin = baseURLString + "tcnbdlogin.do"
+    static var   tcBindInfoMobile = baseURLString + "tcBindInfoMobile.do"
+    
 }

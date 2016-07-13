@@ -98,6 +98,9 @@ class CheckInfoViewController: UIViewController,HYBottomToolBarButtonClickDelega
         loadToolBar()
         updateConstraints()
         loadCheckRecordData()
+        let tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
     }
     override func viewDidAppear(animated: Bool) {
         if checkRecord != nil {
@@ -265,6 +268,10 @@ class CheckInfoViewController: UIViewController,HYBottomToolBarButtonClickDelega
                 }
             }
 
+    }
+    func dismissKeyboard(){
+        self.registNumeberTxt.resignFirstResponder()
+        self.shenHeBeiZhuTxt.resignFirstResponder()
     }
     
 }

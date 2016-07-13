@@ -136,82 +136,110 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
             default: return nil
         }
     }
-
-    //上传运维信息
-    func uploadToServer(sender:UIViewController) {
+     func uploadToServer(sender:UIViewController) {
         if HYNetwork.isConnectToNetwork(sender) {
             guard  loginUser != nil else {
-                HYProgress.showErrorWithStatus("您未登录，不能请先登录！")
+                HYProgress.showErrorWithStatus("您未登录，请先登录！")
                 return
             }
-            let image = HYImage.shareInstance.getImageForName(self.imgName)
-            let imgStr:String = HYImage.get64encodingStr(image)
-            let fileLen = imgStr.characters.count
-//            guard imgStr != "" else {
-//                HYProgress.showErrorWithStatus("图片不存在或已被删除，请重新拍摄！")
-//                return
-//            }
-            let maintainTypeString = self.getTitleForMaintainTypeCode()!
-            let location = HYDbLocation()
-            (self.map_X0,self.map_Y0) = location.getFrontLocation(self.startTime)
-            (self.map_X1,self.map_Y1) = location.getEndLocation(self.startTime)
-            (self.map_X2,self.map_Y2) = location.getFrontLocation(self.endTime)
             HYProgress.showWithStatus("正在上传，请稍后！")
-            Alamofire.request(.POST, URLStrings.ywAddMobile3, parameters: [
-                "twoCodeId":self.twoCodeId[0...7],
-                "userId":"\(loginUser!.userId!)",
-                "ywKind":self.ywKind,
-                "startTime":self.startTime,
-                "endTime":self.endTime,
-                "sPosition":self.sPosition,
-                "ePosition":self.ePosition,
-                "maintainTypecode":maintainTypeString,
-                "remark":self.remark,
-                "threedscanning":self.threedscanning,
-                "map_X0":self.map_X0,
-                "map_Y0":self.map_Y0,
-                "map_X1":self.map_X1,
-                "map_Y1":self.map_Y1,
-                "map_X2":self.map_X2,
-                "map_Y2":self.map_Y2,
-                "ywstatusFlag":self.ywstatusFlag,
-                "imgStr":imgStr,
-                "fileLen":fileLen,
-                "ywDetail":self.ywDetail
+            Alamofire.request(.GET, URLStrings.tcBindInfoMobile, parameters: [
+                "account":loginUser!.account!
                 ]).responseJSON { response in
                     HYProgress.dismiss()
                     if response.result.value != nil {
-                        if self.ywstatusFlag != "1" {
-                            if self.isLocationCorrect(HYJSON(response.result.value!)["map_X"].double!, map_Y: HYJSON(response.result.value!)["map_Y"].double!) {
-                                self.ywstatusFlag = "1"
+                        let iMSI = HYJSON(response.result.value!)["iMSI"].string!
+                        let iMEI = HYJSON(response.result.value!)["iMEI"].string!
+                        //let binding = HYJSON(response.result.value!)["binding"].string!
+                        let sysTime = HYJSON(response.result.value!)["sysTime"].string!
+                        let timeDistance = HYHandler.getDateDistance(self.endTime, bigDateString: sysTime)
+                        if iMSI == Constants.iMSI && iMEI == Constants.iMEI {
+                            if 3600 >  timeDistance  {
+                                HYProgress.showErrorWithStatus("该条数据过新，暂时不能上传，请稍后再试!")
                             }
-                        }
-                        switch (HYJSON(response.result.value!)["message"].string!){
-                        case "1" :
-                            if self.ywstatusFlag == "1"{
-                                self.state = "通过"
+                            else if timeDistance > 15 * 24 * 3600{
+                                HYProgress.showErrorWithStatus("该条数据过期，不能上传!")
                             }
                             else {
-                                self.state = "审核中"
+                                self.upload(sender)
                             }
-                            HYProgress.showSuccessWithStatus("上传成功！")
-                            self.isUpload = true
-                            self.updateDb()
-                            (sender as! MaintainRecordViewController) .maintainRecords = MaintainRecord.selectAll()
-                        case "2" :
-                            HYProgress.showErrorWithStatus("上传失败,该电梯不属于你公司运维!")
-                        case "3" :
-                            HYProgress.showErrorWithStatus("上传失败,手机未绑定!")
-                        case "4" :
-                            HYProgress.showErrorWithStatus("上传失败,电梯标签未注册!")
-                        default :
-                            HYProgress.showErrorWithStatus("未知错误!")
+                        }
+                        else {
+                            HYProgress.showErrorWithStatus("手机绑定信息有误!")
                         }
                     }
                     else{
                         HYProgress.showErrorWithStatus("网络错误或该条记录有误!")
                     }
             }
+            
+        }
+
+    }
+    //上传运维信息
+    func upload(sender:UIViewController) {
+        let image = HYImage.shareInstance.getImageForName(self.imgName)
+        let imgStr:String = HYImage.get64encodingStr(image)
+        let fileLen = imgStr.characters.count
+        let maintainTypeString = self.getTitleForMaintainTypeCode()!
+        let location = HYDbLocation()
+        (self.map_X0,self.map_Y0) = location.getFrontLocation(self.startTime)
+        (self.map_X1,self.map_Y1) = location.getEndLocation(self.startTime)
+        (self.map_X2,self.map_Y2) = location.getFrontLocation(self.endTime)
+        
+        Alamofire.request(.POST, URLStrings.ywAddMobile3, parameters: [
+            "twoCodeId":self.twoCodeId[0...7],
+            "userId":"\(loginUser!.userId!)",
+            "ywKind":self.ywKind,
+            "startTime":self.startTime,
+            "endTime":self.endTime,
+            "sPosition":self.sPosition,
+            "ePosition":self.ePosition,
+            "maintainTypecode":maintainTypeString,
+            "remark":self.remark,
+            "threedscanning":self.threedscanning,
+            "map_X0":self.map_X0,
+            "map_Y0":self.map_Y0,
+            "map_X1":self.map_X1,
+            "map_Y1":self.map_Y1,
+            "map_X2":self.map_X2,
+            "map_Y2":self.map_Y2,
+            "ywstatusFlag":self.ywstatusFlag,
+            "imgStr":imgStr,
+            "fileLen":fileLen,
+            "ywDetail":self.ywDetail
+            ]).responseJSON { response in
+                if response.result.value != nil {
+                    if self.ywstatusFlag != "1" {
+                        if self.isLocationCorrect(HYJSON(response.result.value!)["map_X"].double!, map_Y: HYJSON(response.result.value!)["map_Y"].double!) {
+                            self.ywstatusFlag = "1"
+                        }
+                    }
+                    switch (HYJSON(response.result.value!)["message"].string!){
+                    case "1" :
+                        if self.ywstatusFlag == "1"{
+                            self.state = "通过"
+                        }
+                        else {
+                            self.state = "审核中"
+                        }
+                        HYProgress.showSuccessWithStatus("上传成功！")
+                        self.isUpload = true
+                        self.updateDb()
+                        (sender as! MaintainRecordViewController) .maintainRecords = MaintainRecord.selectAll()
+                    case "2" :
+                        HYProgress.showErrorWithStatus("上传失败,该电梯不属于你公司运维!")
+                    case "3" :
+                        HYProgress.showErrorWithStatus("上传失败,手机未绑定!")
+                    case "4" :
+                        HYProgress.showErrorWithStatus("上传失败,电梯标签未注册!")
+                    default :
+                        HYProgress.showErrorWithStatus("未知错误!")
+                    }
+                }
+                else{
+                    HYProgress.showErrorWithStatus("网络错误或该条记录有误!")
+                }
         }
     }
     func ywDetailToTuple() -> (Int,String,Array<String>)? {

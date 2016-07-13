@@ -37,6 +37,9 @@ class QueryEvalutationInfoViewController: UIViewController,HYBottomToolBarButton
     override func viewDidLoad() {
         super.viewDidLoad()
         loadToolBar()
+        let tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
     }
     @IBAction func submitBtnClick(sender: UIButton) {
         if HYNetwork.isConnectToNetwork(self) {
@@ -123,7 +126,9 @@ class QueryEvalutationInfoViewController: UIViewController,HYBottomToolBarButton
         newToolBar.secondButton.hidden = true
         bottomToolBar.addSubview(newToolBar)
     }
-    
+    func dismissKeyboard(){
+        self.messageTxt.resignFirstResponder()
+    }
     /**
     *  其他：如扩展等
     */

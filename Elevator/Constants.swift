@@ -52,23 +52,17 @@ class Constants {
             var iMSIString =  HYDefaults[.iMSI]
             if iMSIString == nil {
                 iMSIString = NSDate().timeIntervalSinceReferenceDate.description.stringByReplacingOccurrencesOfString(".", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-                if iMSIString!.characters.count == 15 {
-                    return iMSIString!
+                if iMSIString!.characters.count > 15 {
+                    iMSIString = iMSIString![0...14]
                 }
-                else {
-                    if iMSIString!.characters.count > 15 {
-                        return iMSIString![0...14]
+                else if iMSIString!.characters.count < 15{
+                    for _ in 0 ..< (15 - iMSIString!.characters.count) {
+                        iMSIString! += "0"
                     }
-                    else {
-                        for _ in 0 ..< (15 - iMSIString!.characters.count) {
-                            iMSIString! += "0"
-                        }
-                        return iMSIString!
-                    }
-                    
                 }
-
+                HYDefaults[.iMSI] = iMSIString!
             }
+            
             return iMSIString!
         }
     }
@@ -77,21 +71,16 @@ class Constants {
             var iMEIString =  HYDefaults[.iMEI]
             if iMEIString == nil {
                 iMEIString = NSDate().timeIntervalSince1970.description.stringByReplacingOccurrencesOfString(".", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-                if iMEIString!.characters.count == 15 {
-                    return iMEIString!
+                if iMEIString!.characters.count > 15 {
+                    iMEIString = iMEIString![0...14]
                 }
-                else {
-                    if iMEIString!.characters.count > 15 {
-                        return iMEIString![0...14]
-                    }
-                    else {
-                        for _ in 0 ..< (15 - iMEIString!.characters.count) {
-                            iMEIString! += "0"
-                        }
-                        return iMEIString!
+                else if iMEIString!.characters.count < 15{
+                    for _ in 0 ..< (15 - iMEIString!.characters.count) {
+                        iMEIString! += "0"
                     }
                     
                 }
+                HYDefaults[.iMEI] = iMEIString!
             }
             return iMEIString!
         }

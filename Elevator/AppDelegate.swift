@@ -25,8 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.makeKeyAndVisible()
         
         let siren = Siren.sharedInstance
-        siren.alertType = SirenAlertType.Option
+        siren.alertType = SirenAlertType.Skip
         Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.ChineseSimplified
+        siren.appID = "1132133435"
         siren.checkVersion(.Immediately)
 //        print(Location.shareInstance.currentLocationX)
 //        print(Location.shareInstance.currentLocationY)

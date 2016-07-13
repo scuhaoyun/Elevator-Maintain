@@ -1090,7 +1090,6 @@
 				TargetAttributes = {
 					686EAB9A1C2BEC0600AB3558 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = K2GP4428WM;
 					};
 					686EABAE1C2BEC0600AB3558 = {
 						CreatedOnToolsVersion = 7.0;
@@ -1489,14 +1488,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ZhiYanTianXia NetWork Technology Co.Ltd (4QC8WJ8S4B)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZhiYanTianXia NetWork Technology Co.Ltd (4QC8WJ8S4B)";
 				INFOPLIST_FILE = Elevator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.maintain.elevator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "aa92e6e5-6cc5-4a5f-9898-e9f82143ebf9";
 				SWIFT_OBJC_BRIDGING_HEADER = "Elevator/Elevator-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1509,14 +1508,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ZhiYanTianXia NetWork Technology Co.Ltd (4QC8WJ8S4B)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZhiYanTianXia NetWork Technology Co.Ltd (4QC8WJ8S4B)";
 				INFOPLIST_FILE = Elevator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.maintain.elevator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "aa92e6e5-6cc5-4a5f-9898-e9f82143ebf9";
 				SWIFT_OBJC_BRIDGING_HEADER = "Elevator/Elevator-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

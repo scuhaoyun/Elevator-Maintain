@@ -27,6 +27,9 @@ class MaintainSubDetailInfoController : UIViewController,HYBottomToolBarButtonCl
         super.viewDidLoad()
         loadToolBar()
         loadInfo()
+        let tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
     }
     /**
     *  协议方法
@@ -60,6 +63,9 @@ class MaintainSubDetailInfoController : UIViewController,HYBottomToolBarButtonCl
         if remark != nil {
             self.remarkTxt.text = remark!
         }
+    }
+    func dismissKeyboard(){
+        self.remarkTxt.resignFirstResponder()
     }
       /**
     *  其他：如扩展等

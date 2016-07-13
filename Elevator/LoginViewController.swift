@@ -62,8 +62,9 @@ class LoginViewController : UIViewController{
                         if response.result.value != nil {
                             loginUser = Mapper<User>().map(response.result.value!)
                             HYProgress.dismiss()
-                            if loginUser!.checkLogin(self) {
+                            if loginUser != nil && loginUser!.checkLogin(self) {
                                 isLogin = true
+                                loginUser!.account = self.usernameTxt.text!
                                 if loginUser!.binding! == 1 {
                                     HYProgress.showWithStatus("正在绑定手机，稍等！")
                                     Alamofire.request(.GET, URLStrings.tcBindAddMobile, parameters: ["account": self.usernameTxt.text!,"password":self.passwordTxt.text!,"iMSI":Constants.iMSI,"iMEI":Constants.iMEI])

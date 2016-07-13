@@ -62,7 +62,7 @@ class QueryElevatorInfoViewController : UIViewController,HYBottomToolBarButtonCl
         self.device_idTxt.text = elevatorInfo?.device_id
         self.verTxt.text = elevatorInfo?.ver
         self.fix_AddrTxt.text = elevatorInfo?.fix_Addr
-        self.maitenUnitTxt.text = elevatorInfo?.maintenUnit
+        self.maitenUnitTxt.text = elevatorInfo?.inspectionUnit
         self.userNumberTxt.text = elevatorInfo?.useNumber
         self.inspectorTxt.text = elevatorInfo?.inspector
         self.nextInspectDateTxt.text = elevatorInfo?.nextInspectDate

@@ -26,6 +26,9 @@ class SetupViewController:UIViewController,HYBottomToolBarButtonClickDelegate {
         super.viewDidLoad()
         loadToolBar()
         loadSetupInfo()
+        let tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
     }
     /**
      *  协议方法
@@ -125,6 +128,17 @@ class SetupViewController:UIViewController,HYBottomToolBarButtonClickDelegate {
         }
         
     }
-
+    func dismissKeyboard(){
+        self.applicationAddressTxt.resignFirstResponder()
+        self.applicationPortTxt.resignFirstResponder()
+        self.severAddressTxt.resignFirstResponder()
+        self.serverPortTxt.resignFirstResponder()
+        self.deviceAddressTxt.resignFirstResponder()
+        self.devicePortTxt.resignFirstResponder()
+        self.mediaAddressTxt.resignFirstResponder()
+        self.mediaPortTxt.resignFirstResponder()
+        self.noticeAddressTxt.resignFirstResponder()
+        self.noticePortTxt.resignFirstResponder()
+    }
 
 }
