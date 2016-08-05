@@ -38,6 +38,7 @@ class MaintainRecordViewController : UIViewController,HYBottomToolBarButtonClick
                 (action: UIAlertAction!) -> Void in
                 let maintainRecord = (cell  as! MaintainRecordCell).maintainRecord
                 maintainRecord!.uploadToServer(self)
+                
             })
             let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
             alertController.addAction(okAction)
@@ -45,6 +46,10 @@ class MaintainRecordViewController : UIViewController,HYBottomToolBarButtonClick
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         else if clickBtn.currentTitle == "已上传" {
+            let maintainRecord = (cell  as! MaintainRecordCell).maintainRecord
+            maintainRecord?.queryEleInfo(self)
+        }
+        else if clickBtn.currentTitle == "补数据" {
             HYProgress.showErrorWithStatus("该条记录已上传过，不能重复上传")
         }
         else {

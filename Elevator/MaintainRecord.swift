@@ -152,10 +152,10 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
                         let iMEI = HYJSON(response.result.value!)["iMEI"].string!
                         //let binding = HYJSON(response.result.value!)["binding"].string!
                         let sysTime = HYJSON(response.result.value!)["sysTime"].string!
-                        let timeDistance = HYHandler.getDateDistance(self.endTime, bigDateString: sysTime)
+                        let timeDistance = HYHandler.getDateDistance(self.endTime, bigDateString: sysTime)!
                         if iMSI == Constants.iMSI && iMEI == Constants.iMEI {
-                            if 3600 >  timeDistance  {
-                                HYProgress.showErrorWithStatus("该条数据过新，暂时不能上传，请稍后再试!")
+                            if -3600 >  timeDistance  {
+                                HYProgress.showErrorWithStatus("该条数据时间有误，不能上传!")
                             }
                             else if timeDistance > 15 * 24 * 3600{
                                 HYProgress.showErrorWithStatus("该条数据过期，不能上传!")
@@ -188,7 +188,7 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
         (self.map_X2,self.map_Y2) = location.getFrontLocation(self.endTime)
         
         Alamofire.request(.POST, URLStrings.ywAddMobile3, parameters: [
-            "twoCodeId":self.twoCodeId[0...7],
+            "twoCodeId":self.twoCodeId,
             "userId":"\(loginUser!.userId!)",
             "ywKind":self.ywKind,
             "startTime":self.startTime,
@@ -232,6 +232,10 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
                     case "3" :
                         HYProgress.showErrorWithStatus("上传失败,手机未绑定!")
                     case "4" :
+                        self.isUpload = true;
+                        self.state = "补数据"
+                        self.updateDb()
+                        (sender as! MaintainRecordViewController) .maintainRecords = MaintainRecord.selectAll()
                         HYProgress.showErrorWithStatus("上传失败,电梯标签未注册!")
                     default :
                         HYProgress.showErrorWithStatus("未知错误!")
@@ -241,6 +245,23 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
                     HYProgress.showErrorWithStatus("网络错误或该条记录有误!")
                 }
         }
+    }
+    func queryEleInfo(sender:UIViewController){
+        if HYNetwork.isConnectToNetwork(sender) {
+            HYProgress.showWithStatus("正在查询，请稍后！")
+            Alamofire.request(.POST, URLStrings.tcqueryEleinfoMobile, parameters: [
+                "twoCodeId":self.twoCodeId]).responseJSON { response in
+                    HYProgress.dismiss()
+                    if response.result.value != nil {
+                        if HYJSON(response.result.value!)["eleisvalid"].int! == 1 {
+                            self.state = "通过";
+                            self.updateDb()
+                            (sender as! MaintainRecordViewController) .maintainRecords = MaintainRecord.selectAll()
+                        }
+                    }
+            }
+        }
+
     }
     func ywDetailToTuple() -> (Int,String,Array<String>)? {
         var array = self.ywDetail.componentsSeparatedByString("&")

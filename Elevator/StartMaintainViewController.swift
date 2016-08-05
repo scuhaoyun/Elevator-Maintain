@@ -41,7 +41,7 @@ class StartMaintainViewController : UIViewController,HYBottomToolBarButtonClickD
                     maintainRecord!.twoCodeId = newValue!.QR24String
                 }
                 else {
-                    maintainRecord!.twoCodeId = "\(newValue!.QR6String)0\(ywType)"
+                    maintainRecord!.twoCodeId = "\(newValue!.QR6String)0\(ywType)0000000000000000"
                 }
 
                 guard loginUser != nil else {
@@ -85,8 +85,12 @@ class StartMaintainViewController : UIViewController,HYBottomToolBarButtonClickD
         let tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         tapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGesture)
+        autoEnd()
+        
     }
-   
+    override func viewWillDisappear(animated: Bool) {
+        
+    }
     @IBAction func sureBtnClick(sender: UIButton) {
         if isInfoCorrect() {
             if HYNetwork.isConnectToNetwork(self) {
@@ -166,6 +170,20 @@ class StartMaintainViewController : UIViewController,HYBottomToolBarButtonClickD
         self.showViewController(maintainDetailInfoController, sender: self)
         HYToast.showString("正在运维...")
 
+    }
+    func autoEnd(){
+        if maintainRecord != nil && maintainRecord!.isExit {
+             let oldRecord = MaintainRecord.selectForTwoCodeId(maintainRecord!.twoCodeId)[0];
+            if oldRecord.startTime != "" && oldRecord.endTime == "" {
+                maintainRecord = oldRecord
+                maintainRecord!.endTime = Constants.curruntTimeString;
+                endMaintainUpdateView();
+                self.startMaintainBtn.enabled = false;
+                self.endMaintainBtn.enabled = false;
+                maintainRecord?.updateDb()
+            }
+            
+        }
     }
     @IBAction func endMaintainBtnClick(sender: UIButton) {
         guard qrcode != nil else {
