@@ -94,6 +94,10 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
         return HYDbMaintainRecord().getMaintainRecordForStartTime(time)
     }
     static func selectForTwoCodeId(twoCodeId:String) -> [MaintainRecord]{
+        let maintainRecord = HYDbMaintainRecord().getMaintainRecordForQR(twoCodeId)
+        if maintainRecord.count > 0 {
+            return maintainRecord
+        }
         var qrStr1 = twoCodeId
         qrStr1.replace(7, withString: "0")
         let maintainRecord0 = HYDbMaintainRecord().getMaintainRecordForQR(qrStr1)
@@ -246,6 +250,7 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
                 }
         }
     }
+    //查询电梯状态
     func queryEleInfo(sender:UIViewController){
         if HYNetwork.isConnectToNetwork(sender) {
             HYProgress.showWithStatus("正在查询，请稍后！")
@@ -262,6 +267,47 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
             }
         }
 
+    }
+    //更新审核状态
+    func updateState(sender:UIViewController){
+        let alertController = UIAlertController(title: "温馨提示", message: "确定要更新状态吗？", preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction(title: "确认", style: UIAlertActionStyle.Default, handler:{
+            (action: UIAlertAction!) -> Void in
+            if HYNetwork.isConnectToNetwork(sender) {
+                HYProgress.showWithStatus("正在查询，请稍后！")
+                Alamofire.request(.POST, URLStrings.tcqueryEleinfoMobile, parameters: [
+                    "twoCodeId":self.twoCodeId,"startTime":self.startTime]).responseJSON { response in
+                        HYProgress.dismiss()
+                        if response.result.value != nil {
+                            var newState = self.state
+                            switch HYJSON(response.result.value!)["Ywstatus"].int! {
+                            case 1:
+                                newState = "通过"
+                            case 4:
+                                newState = "无效"
+                            case 0:
+                                newState = "审核中"
+                            case 5:
+                                newState = "无权运维"
+                            default:break
+                            }
+                            if newState != self.state {
+                                self.state = newState;
+                                self.updateDb()
+                                (sender as! MaintainRecordViewController) .maintainRecords = MaintainRecord.selectAll()
+                            }
+                            HYProgress.showSuccessWithStatus("当前运维状态为: \(newState)")
+                        }
+                }
+            }
+
+            
+        })
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        sender.presentViewController(alertController, animated: true, completion: nil)
+        
     }
     func ywDetailToTuple() -> (Int,String,Array<String>)? {
         var array = self.ywDetail.componentsSeparatedByString("&")

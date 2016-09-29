@@ -30,4 +30,5 @@ struct URLStrings {
     static var   tcnbdlogin = baseURLString + "tcnbdlogin.do"
     static var   tcBindInfoMobile = baseURLString + "tcBindInfoMobile.do"
     static var   tcqueryEleinfoMobile = baseURLString + "tcqueryEleinfoMobile.do"
+    static var   tcqueryYwStatus = baseURLString + "tcqueryYwStatus.do"
 }

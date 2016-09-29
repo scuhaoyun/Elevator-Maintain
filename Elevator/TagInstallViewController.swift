@@ -51,7 +51,7 @@ class TagInstallViewController : UIViewController,HYBottomToolBarButtonClickDele
         
     }
     @IBAction func areaComboBoxPicker(sender: AnyObject) {
-        areaPicker = AJDropDownPicker(delegate: self, dataSourceArray: ["锦江区","武侯区","成华区","金牛区","青羊区","温江区","青白江区","新都区","龙泉驿区","都江堰市","崇州市","邛崃市","彭州市","双流县","金堂县","大邑县","郫县","新津县","蒲江县"])
+        areaPicker = AJDropDownPicker(delegate: self, dataSourceArray: ["锦江","青羊","金牛","武侯","成华","高新","龙泉驿","青白江","新都","温江","金堂","双流","郫县","大邑","浦江","新津","都江堰","彭州","邛崃","崇州","简阳","天府新"])
         areaPicker!.showFromView(sender as! UIView)
     }
     @IBAction func useComboBoxPicker(sender: AnyObject) {

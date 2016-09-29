@@ -80,6 +80,12 @@ class LoginViewController : UIViewController{
                         else {
                             HYProgress.showErrorWithStatus("网络连接错误，请检查网络后重试！")
                         }
+                        if isLogin {
+                            HYToast.showString("登录成功！")
+                        }
+                        else {
+                            HYToast.showString("登录失败！")
+                        }
                         let mainStoryBoard = UIStoryboard(name:"MainList", bundle: nil)
                         let mainViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("MainViewController") as UIViewController
                         self.presentViewController(mainViewController, animated: true, completion: nil)

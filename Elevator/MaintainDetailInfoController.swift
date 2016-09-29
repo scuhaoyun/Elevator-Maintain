@@ -15,7 +15,7 @@ class MaintainDetailInfoController : UIViewController,HYBottomToolBarButtonClick
     @IBOutlet weak var maintainItemTableview: UITableView!
     @IBOutlet weak var bottomToolBar: UIView!
     var maintainRecord:MaintainRecord?
-    var onCompletion:MaintainCompletion?
+    //var onCompletion:MaintainCompletion?
     var maintainItems:JSON = []
     var maintainNeeds:JSON = []/**
     *  View生命周期函数
@@ -37,9 +37,9 @@ class MaintainDetailInfoController : UIViewController,HYBottomToolBarButtonClick
     */
     func toolBarButtonClicked(sender: UIButton) {
         switch sender.currentTitle! {
-            case "返回":break
+            case "返回":goToMainVC()
             case "确认":saveData()
-            default:  fatalError("HYBottomToolBarButtonClickDelegate method go error!")
+            default:  break
         }
     }
     
@@ -112,12 +112,18 @@ class MaintainDetailInfoController : UIViewController,HYBottomToolBarButtonClick
         //self.maintainRecord!.setywDetail(maintainItems["item"].count, type:self.maintainRecord!.type)
     }
     func saveData(){
-        onCompletion?(self.maintainRecord)
+        self.maintainRecord?.updateDb()
+       goToMainVC()
     }
     func setExtraCellLineHidden(){
         let view = UIView()
         view.backgroundColor = UIColor.clearColor()
         maintainItemTableview.tableFooterView = view
+    }
+    func goToMainVC(){
+        let mainStoryBoard = UIStoryboard(name:"MainList", bundle: nil)
+        let mainVC = mainStoryBoard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
+        self.presentViewController(mainVC, animated: true, completion: nil)
     }
     /**
     *  其他：如扩展等

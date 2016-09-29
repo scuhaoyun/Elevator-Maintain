@@ -17,12 +17,6 @@ class MainViewController : UIViewController,HYBottomToolBarButtonClickDelegate {
         super.viewDidLoad()
         
         loadToolBar()
-        if isLogin {
-            HYToast.showString("登录成功！")
-        }
-        else {
-            HYToast.showString("登录失败！")
-        }
     }
        @IBAction func queryBtnClick(sender: UIButton) {
         let qrcodeViewController = QRScanViewController(completion: {
@@ -69,7 +63,6 @@ class MainViewController : UIViewController,HYBottomToolBarButtonClickDelegate {
                         let imageName = HYImage.shareInstance.imageToSave(scanedImage!)
                         if imageName != nil {
                              maintainRecord.imgName = imageName!
-                             print(imageName!)
                         }
                     }
                     let maintainStoryBoard = UIStoryboard(name:"Maintain", bundle: nil)

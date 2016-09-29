@@ -39,6 +39,22 @@ class HYNetwork: NSObject {
             return false
         }
     }
+    class func isReachableNoTips() -> Bool {
+        var reachability:HYReachability?
+        do {
+            reachability = try HYReachability.reachabilityForInternetConnection()
+        }
+        catch{
+            return false
+        }
+        if reachability!.isReachable(){
+            return true
+        }
+        else {
+            return false
+        }
+    }
+
 
     
 }

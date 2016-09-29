@@ -45,14 +45,14 @@ class MaintainRecordViewController : UIViewController,HYBottomToolBarButtonClick
             alertController.addAction(cancelAction)
             self.presentViewController(alertController, animated: true, completion: nil)
         }
-        else if clickBtn.currentTitle == "已上传" {
+        else if clickBtn.currentTitle == "审核中" {
             let maintainRecord = (cell  as! MaintainRecordCell).maintainRecord
-            maintainRecord?.queryEleInfo(self)
+            maintainRecord?.updateState(self)
         }
         else if clickBtn.currentTitle == "补数据" {
             HYProgress.showErrorWithStatus("该条记录已上传过，不能重复上传")
         }
-        else {
+        else if clickBtn.currentTitle == nil || clickBtn.currentTitle == "" {
             var isAllSelect = true
             for cell in tableview.visibleCells {
                 let maintainCell = cell  as! MaintainRecordCell
@@ -79,7 +79,7 @@ class MaintainRecordViewController : UIViewController,HYBottomToolBarButtonClick
         case "删除":removeBtnOnToolBarClick()
         
             break
-        default:  fatalError("HYBottomToolBarButtonClickDelegate method go error!")
+        default:  break
         }
     }
     /**
@@ -189,8 +189,6 @@ class MaintainRecordViewController : UIViewController,HYBottomToolBarButtonClick
         }
         
     }
-    
-    
     /**
     *  其他：如扩展等
     */
