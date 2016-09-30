@@ -69,6 +69,7 @@ class LoginViewController : UIViewController{
                                     HYProgress.showWithStatus("正在绑定手机，稍等！")
                                     Alamofire.request(.GET, URLStrings.tcBindAddMobile, parameters: ["account": self.usernameTxt.text!,"password":self.passwordTxt.text!,"iMSI":Constants.iMSI,"iMEI":Constants.iMEI])
                                          .responseJSON { response in
+                                            sleep(1)
                                             HYProgress.dismiss()
                                             if (response.result.value! as! Int) == 0 {
                                                 HYToast.showString("绑定失败！")

@@ -288,13 +288,13 @@
                         <viewControllerLayoutGuide type="bottom" id="D5Q-53-lQt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eGR-KB-dKw">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="1110"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9aX-hh-gT8">
                                 <rect key="frame" x="0.0" y="20" width="400" height="90"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电梯运维版 V1.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWi-XG-jos">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电梯运维版 V1.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWi-XG-jos">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="47" id="E6V-Wt-wN1"/>
@@ -341,14 +341,34 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8R-QJ-kYy">
-                                <rect key="frame" x="0.0" y="110" width="400" height="890"/>
+                                <rect key="frame" x="0.0" y="110" width="400" height="1000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UcU-jw-eGt">
-                                        <rect key="frame" x="0.0" y="-7" width="400" height="850"/>
+                                        <rect key="frame" x="0.0" y="-7" width="400" height="1000"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXm-NP-Pqe">
-                                                <rect key="frame" x="5" y="10" width="390" height="840"/>
-                                                <string key="text">一、软件需要什么权限？ 正常使用本软件，需要手机具有“获取设备信息”、“手机识别码”、“拍照”、“上网”等权限，如手机安装了防火墙，需要打开此权限  二、如果进行账号登录？ 第一次使用账号登录，提示“正在绑定中...”，自动绑定该手机，并且把账号密码保存到手机，以后登录就不再输入账号密码。登录账号失败，不保存账号，提示有“用户不存在”、“密码不正确”、“网络不可用等”  三、什么人员才能对电梯进行运维签到？ 该电梯的所属的维保公司有该运维人员账号，并且进行了手机绑定，才能对电梯进行运维签到，否则签到的数据无法上传  四、如何运维扫描电梯标签？ 1)、运维开始时，点“运维”按钮，使用手机相机对准电梯标签扫描，运维结束时，再点“运维”按钮，使用手机相机对准电梯标签扫描，形成完整的“运维数据” 2)、扫描中按提示，取景框内保持电梯标签二维码，但由于轿厢内灯光等干扰，导致运维扫描困难，请调整扫描拍摄角度，建议由下方仰视45度，进行扫描  五、如何上传运维签到数据？ 上传运维签到数据可配置成自动上传。在电梯轿厢无网络信号时，手动或自动上传失败后，需到有网络信号的地方上传。提示“该电梯不属于你公司运维”、“手机绑定校验错误”，此两种情况需要贵公司与我们联系 注：请及时上传运维数据，否则“电梯安全公共服务平台”会显示该电梯运维超期  六、运维记录列表说明？ 运维数据上传成功后，状态栏显示“通过”、“无效”、“审核中”。“审核中”表示该数据正在审核，需要刷新得到最新状态。状态栏显示“通过”则表示运维成功</string>
+                                                <rect key="frame" x="5" y="10" width="390" height="980"/>
+                                                <mutableString key="text">一、软件需要什么权限？
+正常使用本软件，需要手机具有“获取设备信息”、“手机识别码”、“拍照”、“上网”等权限，如手机安装了防火墙，需要打开此权限
+
+二、如何进行账号登录？
+第一次使用账号登录，提示“正在绑定中...”，自动绑定该手机，并且把账号密码保持到手机，以后登陆就不再输入账号密码。登录账号失败，不保存账号，提示有“用户不存在”、“密码不正确”、“网络不可用”等
+
+三、什么人员才能对电梯进行运维签到？
+该电梯的所属的维保公司有该运维人员账号，并且进行了手机绑定，才能对电梯进行运维签到，否则签到的数据无法上传
+
+四、如何运维扫描电梯标签？
+1）运维开始时，点“运维”按钮，使用手机相机对准电梯标签扫描，运维结束时，再点“运维”按钮，使用手机相机对准电梯标签扫描，形成完整的“运维数据”
+2）扫描中按提示，取景框内保持电梯标签二维码，但由于轿厢内灯光等干扰，导致运维扫描困难，请调整扫描拍摄角度，建议由下方仰视45°角度，进行扫描
+3）若手机相机对准电梯标签扫描20秒异常，会自动弹出提示，要求输入当前电梯编号，用户可根据提示进行下一步操作
+4）若遇轿厢灯光较昏暗情况，会提示“请打开软件灯光”，进行电子标签扫描工作
+
+五、如何上传运维签到数据？
+上传运维签到数据可配置为自动上传。在电梯轿厢无网络信号时，手动或自动上传失败后，需到有网络信号的地方上传。提示“该电梯不属于你公司运维”、“手机绑定校验错误”，此两种情况需要贵公司与我们进行联系
+注：请及时上传运维数据，否则“电梯安全公共服务平台”会显示该电梯运维超期
+
+六、运维记录列表说明？
+运维数据上传成功后，状态栏显示“补数据”、“审核中”、 “无效”、 “通过”。 “补数据”表示需要把电梯的标签粘贴数据上传。“审核中”表示该数据正在审核，需要刷新得到最新状态。“无效”表示运维数据失败，需要重新运维。状态栏显示“通过”则表示运维成功</mutableString>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -357,8 +377,8 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="SXm-NP-Pqe" firstAttribute="leading" secondItem="UcU-jw-eGt" secondAttribute="leading" constant="5" id="KO0-8Y-Fuy"/>
-                                            <constraint firstAttribute="height" constant="850" id="LBC-er-Jsv"/>
-                                            <constraint firstAttribute="bottom" secondItem="SXm-NP-Pqe" secondAttribute="bottom" id="Lek-vr-F7c"/>
+                                            <constraint firstAttribute="height" constant="1000" id="LBC-er-Jsv"/>
+                                            <constraint firstAttribute="bottom" secondItem="SXm-NP-Pqe" secondAttribute="bottom" constant="10" id="Lek-vr-F7c"/>
                                             <constraint firstAttribute="trailing" secondItem="SXm-NP-Pqe" secondAttribute="trailing" constant="5" id="TD1-8T-4tq"/>
                                             <constraint firstItem="SXm-NP-Pqe" firstAttribute="top" secondItem="UcU-jw-eGt" secondAttribute="top" constant="10" id="wMB-uJ-HGa"/>
                                         </constraints>
@@ -369,7 +389,7 @@
                                     <constraint firstAttribute="trailing" secondItem="UcU-jw-eGt" secondAttribute="trailing" id="7ee-7D-qoH"/>
                                     <constraint firstItem="UcU-jw-eGt" firstAttribute="top" secondItem="x8R-QJ-kYy" secondAttribute="top" constant="-7" id="ILb-UW-io6"/>
                                     <constraint firstItem="UcU-jw-eGt" firstAttribute="leading" secondItem="x8R-QJ-kYy" secondAttribute="leading" id="Od7-6C-2cz"/>
-                                    <constraint firstAttribute="bottom" secondItem="UcU-jw-eGt" secondAttribute="bottom" id="SId-kL-OJz"/>
+                                    <constraint firstAttribute="bottom" secondItem="UcU-jw-eGt" secondAttribute="bottom" constant="7" id="SId-kL-OJz"/>
                                     <constraint firstItem="UcU-jw-eGt" firstAttribute="centerX" secondItem="x8R-QJ-kYy" secondAttribute="centerX" id="Xov-md-lU9"/>
                                 </constraints>
                             </scrollView>
@@ -393,7 +413,7 @@
                         </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="1000"/>
+                    <size key="freeformSize" width="400" height="1110"/>
                     <connections>
                         <outlet property="containerView" destination="UcU-jw-eGt" id="HeS-L9-nok"/>
                         <outlet property="containerViewHeight" destination="LBC-er-Jsv" id="uXG-T5-hzU"/>
@@ -402,7 +422,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlf-W1-Eza" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-417" y="285"/>
+            <point key="canvasLocation" x="-419" y="201"/>
         </scene>
         <!--TagViewController-->
         <scene sceneID="hc8-G6-5fI">

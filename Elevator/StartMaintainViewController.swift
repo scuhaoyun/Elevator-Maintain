@@ -111,7 +111,7 @@ class StartMaintainViewController : UIViewController,HYBottomToolBarButtonClickD
         if self.maintainRecord!.sPosition == "" {
             self.maintainRecord!.sPosition = self.maintainRecord!.twoCodeId[7]
         }
-        if self.maintainRecord!.isExit {
+        if self.maintainRecord!.isExit && !self.maintainRecord!.isUpload && self.maintainRecord!.state == "已完成"{
             let alertController = UIAlertController(title: "温馨提示", message: "已存在编号为\(self.maintainRecord!.twoCodeId[0...5])的记录，您确定覆盖该条记录吗？", preferredStyle: UIAlertControllerStyle.Alert)
             let okAction = UIAlertAction(title: "确认", style: UIAlertActionStyle.Default, handler:{
                 (action: UIAlertAction!) -> Void in
@@ -126,6 +126,10 @@ class StartMaintainViewController : UIViewController,HYBottomToolBarButtonClickD
             alertController.addAction(okAction)
             alertController.addAction(cancelAction)
             self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        else if self.maintainRecord!.isExit && self.maintainRecord!.isUpload {
+            self.maintainRecord!.updateDb()
+            self.goToMaintainVC()
         }
         else {
             self.maintainRecord!.insertToDb()
@@ -204,24 +208,25 @@ class StartMaintainViewController : UIViewController,HYBottomToolBarButtonClickD
             }
             else{
                 if isInfoCorrect() {
-                    if HYNetwork.isConnectToNetwork(self) {
-                        HYProgress.showWithStatus("正在查询，请稍等！")
-                        Alamofire.request(.GET,URLStrings.tcIsValidMobile, parameters: ["registNumber": self.twoCodeIdTxt.text!])
-                            .responseJSON { response in
-                                HYProgress.dismiss()
-                                if response.result.isSuccess {
-                                    if (response.result.value! as! Int) == 1 {
-                                        self.startMaintainBtn.enabled = true
-                                    }
-                                    else {
-                                        HYProgress.showErrorWithStatus("不存在该编号！")
-                                    }
-                                }
-                                else {
-                                    HYProgress.showErrorWithStatus("网络超时！")
-                                }
-                        }
-                    }
+                    self.startMaintainBtn.enabled = true
+//                    if HYNetwork.isConnectToNetwork(self) {
+//                        HYProgress.showWithStatus("正在查询，请稍等！")
+//                        Alamofire.request(.GET,URLStrings.tcIsValidMobile, parameters: ["registNumber": self.twoCodeIdTxt.text!])
+//                            .responseJSON { response in
+//                                HYProgress.dismiss()
+//                                if response.result.isSuccess {
+//                                    if (response.result.value! as! Int) == 1 {
+//                                        self.startMaintainBtn.enabled = true
+//                                    }
+//                                    else {
+//                                        HYProgress.showErrorWithStatus("不存在该编号！")
+//                                    }
+//                                }
+//                                else {
+//                                    HYProgress.showErrorWithStatus("网络超时！")
+//                                }
+//                        }
+//                    }
                 }
 
             }

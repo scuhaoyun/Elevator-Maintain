@@ -51,7 +51,7 @@ class TagInstallViewController : UIViewController,HYBottomToolBarButtonClickDele
         
     }
     @IBAction func areaComboBoxPicker(sender: AnyObject) {
-        areaPicker = AJDropDownPicker(delegate: self, dataSourceArray: ["锦江","青羊","金牛","武侯","成华","高新","龙泉驿","青白江","新都","温江","金堂","双流","郫县","大邑","浦江","新津","都江堰","彭州","邛崃","崇州","简阳","天府新"])
+        areaPicker = AJDropDownPicker(delegate: self, dataSourceArray: ["锦江","青羊","金牛","武侯","成华","高新","龙泉驿","青白江","新都","温江","金堂","双流","郫县","大邑","蒲江","新津","都江堰","彭州","邛崃","崇州","简阳","天府新"])
         areaPicker!.showFromView(sender as! UIView)
     }
     @IBAction func useComboBoxPicker(sender: AnyObject) {
@@ -133,6 +133,9 @@ class TagInstallViewController : UIViewController,HYBottomToolBarButtonClickDele
             //HYProgress.showWithStatus("正在保存，请稍后！")
             if tagRecord == nil {
                 tagRecord = Tag()
+            }
+            if tagRecord!.isUpload {
+                return
             }
             tagRecord!.area = self.areaComboBox.currentTitle!
             tagRecord!.eleStopFlag = self.useComboBox.currentTitle! == "在用" ? "0" : "1"
@@ -228,7 +231,7 @@ class TagInstallViewController : UIViewController,HYBottomToolBarButtonClickDele
             self.img3Btn.setBackgroundImage(image3, forState: .Normal)
             self.img3Btn.tag = 111
         }
-       
+        loadTxtEnabled()
 
     }
     func takePhoto(sender:UIButton,croppringEnabled:Bool){
@@ -270,5 +273,23 @@ class TagInstallViewController : UIViewController,HYBottomToolBarButtonClickDele
         self.buildingTxt.resignFirstResponder()
         self.unitTxt.resignFirstResponder()
         self.mobileUploadbeizhuTxt.resignFirstResponder()
+    }
+    func loadTxtEnabled(){
+        if tagRecord != nil  {
+            self.registNumberTxt.enabled = false
+            if tagRecord!.isUpload {
+                self.useNumberTxt.enabled = false
+                self.registCodeTxt.enabled = false
+                self.addressTxt.enabled = false
+                self.buildingNameTxt.enabled = false
+                self.buildingTxt.enabled = false
+                self.unitTxt.enabled = false
+                self.mobileUploadbeizhuTxt.enabled = false
+                self.img1Btn.enabled = false
+                self.img2Btn.enabled = false
+                self.img3Btn.enabled = false
+                
+            }
+        }
     }
 }

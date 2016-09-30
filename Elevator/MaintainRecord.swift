@@ -44,7 +44,16 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
             }
         }
     }
-    
+    var isScan:Bool {
+        get {
+            if self.twoCodeId[8...23] == "0000000000000000" {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+    }
 
     override init() {
         super.init()
@@ -140,7 +149,7 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
             default: return nil
         }
     }
-     func uploadToServer(sender:UIViewController) {
+    func uploadToServer(sender:UIViewController) {
         if HYNetwork.isConnectToNetwork(sender) {
             guard  loginUser != nil else {
                 HYProgress.showErrorWithStatus("您未登录，请先登录！")
@@ -221,7 +230,7 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
                     }
                     switch (HYJSON(response.result.value!)["message"].string!){
                     case "1" :
-                        if self.ywstatusFlag == "1"{
+                        if self.isScan && self.ywstatusFlag == "1"{
                             self.state = "通过"
                         }
                         else {
@@ -232,7 +241,13 @@ class MaintainRecord :NSObject,SwiftAlertViewDelegate {
                         self.updateDb()
                         (sender as! MaintainRecordViewController) .maintainRecords = MaintainRecord.selectAll()
                     case "2" :
-                        HYProgress.showErrorWithStatus("上传失败,该电梯不属于你公司运维!")
+                        if self.isScan {
+                            HYProgress.showErrorWithStatus("上传失败,该电梯不属于你公司运维!")
+                        }
+                        else{
+                           self.state = "审核中"
+                        }
+                        
                     case "3" :
                         HYProgress.showErrorWithStatus("上传失败,手机未绑定!")
                     case "4" :
